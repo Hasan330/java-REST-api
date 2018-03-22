@@ -1,14 +1,26 @@
 package com.hasan;
 
 public class Car {
-    private int doors;
-    private int wheels;
     private long millage;
+    private int year;
 
     private String owner;
     private String model;
     private String engine;
     private String color;
+
+    public Car(){
+
+    }
+
+    public Car(String owner, String model, int year, String engine, String color, long millage) {
+        this.millage = millage;
+        this.year = year;
+        this.owner = owner;
+        this.model = model;
+        this.engine = engine;
+        this.color = color;
+    }
 
     public void setModel(String model){
         String validModel = model.toLowerCase();
@@ -35,21 +47,6 @@ public class Car {
         this.millage += distance;
     }
 
-    public int getDoors() {
-        return doors;
-    }
-
-    public void setDoors(int doors) {
-        this.doors = doors;
-    }
-
-    public int getWheels() {
-        return wheels;
-    }
-
-    public void setWheels(int wheels) {
-        this.wheels = wheels;
-    }
 
     public String getOwner() {
         return owner;
