@@ -1,9 +1,9 @@
 package com.hasan;
 
-import java.util.Date;
+import java.util.Calendar;
 
 public class FuelConsumption {
-    private Date refuelDate;
+    private Calendar refuelDate;
     private Long initialMillage;
     private int cost;
     private double litresFilled;
@@ -12,17 +12,21 @@ public class FuelConsumption {
 
     private longDistances longDistance;
 
-    public FuelConsumption(Date refuelDate, Long initialMillage, int cost, double litresFilled, int proposedDistance, int actualDistance, longDistances longDistance) {
+    public FuelConsumption(Calendar refuelDate, Long initialMillage, int cost, double litresFilled, int proposedDistance, int actualDistance, longDistances longDistance) {
+        this(refuelDate, initialMillage, cost, litresFilled, proposedDistance, actualDistance);
+        this.longDistance = longDistance;
+    }
+
+    public FuelConsumption(Calendar refuelDate, Long initialMillage, int cost, double litresFilled, int proposedDistance, int actualDistance) {
         this.refuelDate = refuelDate;
         this.initialMillage = initialMillage;
         this.cost = cost;
         this.litresFilled = litresFilled;
         this.proposedDistance = proposedDistance;
         this.actualDistance = actualDistance;
-        this.longDistance = longDistance;
     }
 
-    public Date getRefuelDate() {
+    public Calendar getRefuelDate() {
         return refuelDate;
     }
 

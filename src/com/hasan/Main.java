@@ -1,5 +1,8 @@
 package com.hasan;
 
+import java.util.Calendar;
+
+
 public class Main {
     public static void main(String[] args){
         Car seat = new Car();
@@ -17,6 +20,12 @@ public class Main {
 
         seatIbiza.incrementMillage(480);
         System.out.println("Seat millage is: " + seatIbiza.getMillage());
+
+
+        Calendar refill = Calendar.getInstance();
+        refill.set(2018, Calendar.MARCH, 11);
+        System.out.println("Calendar Date: "+ refill.getTime());
+//        seatIbiza.refuel(refill);
 
     }
 }
