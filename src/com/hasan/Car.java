@@ -50,6 +50,10 @@ public class Car extends Vehicle{
     }
 
     public void incrementMillage(int distance){
+        // Only print that millage got incremented if distance was covered
+        if(distance != 0){
+            System.out.println("Incrementing car millage by: " + distance);
+        }
         this.millage += distance;
     }
 
@@ -64,10 +68,13 @@ public class Car extends Vehicle{
 
     //Adding the refuel method
     public void refuel(int id, Calendar refuelDate, Long initialMillage, int cost, double litresFilled, int proposedDistance, int actualDistance){
-        System.out.println("Refueling Vehicle with "+ cost + " Sheikels on " + refuelDate.getTime() + "\n transaction id= " + id);
+        System.out.println("\nTransaction id: " + id + " -> Refueling Vehicle with "+ cost + " Sheikels on " + refuelDate.getTime());
         this.lastFuelConsumption = new FuelConsumption(id, refuelDate, initialMillage, cost, litresFilled, proposedDistance, actualDistance);
 
         FuelConsumptionArrayList.add(lastFuelConsumption);
+
+        //TODO: Use increment millage method as a part of method functionality to dynamically add to car millage when you refuel (optional)
+        incrementMillage(actualDistance);
     }
 
 }

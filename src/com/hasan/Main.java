@@ -13,28 +13,22 @@ public class Main {
         seat.setModel("Ibiza");
         porsche.setModel("911");
 
-        System.out.println("Seat model is " + seatIbiza.getModel());
-        System.out.println("Porsche model is " + porsche.getModel());
+        System.out.println("Seat initial millage is: " + seatIbiza.getMillage());
 
-        System.out.println("Seat millage is: " + seatIbiza.getMillage());
-
-        seatIbiza.incrementMillage(480);
-        System.out.println("Seat millage is: " + seatIbiza.getMillage());
 
 
         //Initial Refill
         Calendar refill = Calendar.getInstance();
         refill.set(2018, Calendar.MARCH, 11);
-        System.out.println("Calendar Date: "+ refill.getTime());
         seatIbiza.refuel(1, refill, 83500L, 240, 40, 480, 0);
-//        System.out.println("Last Refuel Cost: "+ seatIbiza.getLastFuelConsumption().getCost());
+        System.out.println("Car Millage on initial refill= "+ seatIbiza.getMillage());
 
         //Second Refill
         Calendar refill2 = Calendar.getInstance();
         refill2.set(2018, Calendar.MARCH, 23);
-        System.out.println("Calendar Date: "+ refill2.getTime());
         seatIbiza.refuel(2, refill2, 83980L, 245, 40, 500, 483);
-//        System.out.println("Last Refuel Cost: "+ seatIbiza.getLastFuelConsumption().getCost());
+        System.out.println("Car Millage on second refill= "+ seatIbiza.getMillage() + "\n");
+
 
         seatIbiza.getFuelConsumptionArrayList().forEach(x -> System.out.println("ID= "+ x.getId() + " Cost= " +  x.getCost()));;
 
