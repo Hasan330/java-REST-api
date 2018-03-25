@@ -53,9 +53,6 @@ public class Car extends Vehicle{
         this.millage += distance;
     }
 
-
-
-
     //Getter for fuel consumption
     public FuelConsumption getLastFuelConsumption() {
         return lastFuelConsumption;
