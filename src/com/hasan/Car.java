@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 public class Car extends Vehicle{
-    private int     doors;
-    private String  model;
-    private long    millage;
-    private int     gears;
-    private boolean isManual;
+    private int             doors;
+    private String          model;
+    private long            millage;
+    private int             gears;
+    private boolean         isManual;
     private FuelConsumption lastFuelConsumption;
 
     //Adding an array-list for fuel consumption

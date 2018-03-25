@@ -13,10 +13,10 @@ public abstract class Vehicle {
     }
 
     public Vehicle(int year, String owner, String engine, String color) {
-        this.year = year;
-        this.owner = owner;
+        this.year   = year;
+        this.owner  = owner;
         this.engine = engine;
-        this.color = color;
+        this.color  = color;
     }
 
     public void move(){

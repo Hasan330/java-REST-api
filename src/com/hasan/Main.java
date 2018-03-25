@@ -7,14 +7,12 @@ public class Main {
     public static void main(String[] args){
         Car seat = new Car();
         Car seatIbiza = new Car("Hasan", "Ibiza", "1.2 TSI", 2014, "Black", 4, 5, 83500L, true);
-
         Car porsche = new Car();
 
         seat.setModel("Ibiza");
         porsche.setModel("911");
 
         System.out.println("Seat initial millage is: " + seatIbiza.getMillage());
-
 
 
         //Initial Refill
@@ -29,8 +27,7 @@ public class Main {
         seatIbiza.refuel(2, refill2, 83980L, 245, 40, 500, 483);
         System.out.println("Car Millage on second refill= "+ seatIbiza.getMillage() + "\n");
 
-
-        seatIbiza.getFuelConsumptionArrayList().forEach(x -> System.out.println("ID= "+ x.getId() + " Cost= " +  x.getCost()));;
+        seatIbiza.getFuelConsumptionArrayList().forEach(x -> System.out.println("Refill ID= "+ x.getId() + " Cost= " +  x.getCost()));;
 
     }
 }
