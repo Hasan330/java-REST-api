@@ -3,6 +3,7 @@ package com.hasan;
 import java.util.Calendar;
 
 public class FuelConsumption {
+    private int id;
     private Calendar refuelDate;
     private Long initialMillage;
     private int cost;
@@ -12,7 +13,8 @@ public class FuelConsumption {
 
     private longDistances longDistance;
 
-    public FuelConsumption(Calendar refuelDate, Long initialMillage, int cost, double litresFilled, int proposedDistance, int actualDistance) {
+    public FuelConsumption(int id, Calendar refuelDate, Long initialMillage, int cost, double litresFilled, int proposedDistance, int actualDistance) {
+        this.id= id;
         this.refuelDate = refuelDate;
         this.initialMillage = initialMillage;
         this.cost = cost;
@@ -21,8 +23,8 @@ public class FuelConsumption {
         this.actualDistance = actualDistance;
     }
 
-    public FuelConsumption(Calendar refuelDate, Long initialMillage, int cost, double litresFilled, int proposedDistance, int actualDistance, longDistances longDistance) {
-        this(refuelDate, initialMillage, cost, litresFilled, proposedDistance, actualDistance);
+    public FuelConsumption(int id, Calendar refuelDate, Long initialMillage, int cost, double litresFilled, int proposedDistance, int actualDistance, longDistances longDistance) {
+        this(id, refuelDate, initialMillage, cost, litresFilled, proposedDistance, actualDistance);
         this.longDistance = longDistance;
     }
 
@@ -33,6 +35,10 @@ public class FuelConsumption {
 
     public Long getInitialMillage() {
         return initialMillage;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public int getCost() {

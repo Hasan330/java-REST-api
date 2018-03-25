@@ -1,5 +1,6 @@
 package com.hasan;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 
 public class Car extends Vehicle{
@@ -9,6 +10,9 @@ public class Car extends Vehicle{
     private int     gears;
     private boolean isManual;
     private FuelConsumption fuelConsumption;
+
+    //Adding an array-list for fuel consumption
+    ArrayList<FuelConsumption> FuelConsumptionArrayList = new ArrayList<FuelConsumption>();
 
 
     public Car(){
@@ -50,15 +54,23 @@ public class Car extends Vehicle{
     }
 
 
+
+
     //Getter for fuel consumption
     public FuelConsumption getFuelConsumption() {
         return fuelConsumption;
     }
 
+    public ArrayList<FuelConsumption> getFuelConsumptionArrayList() {
+        return FuelConsumptionArrayList;
+    }
+
     //Adding the refuel method
-    public void refuel(Calendar refuelDate, Long initialMillage, int cost, double litresFilled, int proposedDistance, int actualDistance){
-        System.out.println("Refueling Vehicle with "+ cost + " Sheikels on " + refuelDate.getTime());
-        this.fuelConsumption = new FuelConsumption(refuelDate, initialMillage, cost, litresFilled, proposedDistance, actualDistance);
+    public void refuel(int id, Calendar refuelDate, Long initialMillage, int cost, double litresFilled, int proposedDistance, int actualDistance){
+        System.out.println("Refueling Vehicle with "+ cost + " Sheikels on " + refuelDate.getTime() + "\n transaction id= " + id);
+        this.fuelConsumption = new FuelConsumption(id, refuelDate, initialMillage, cost, litresFilled, proposedDistance, actualDistance);
+
+        FuelConsumptionArrayList.add(fuelConsumption);
     }
 
 }
