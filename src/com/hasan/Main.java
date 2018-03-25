@@ -3,10 +3,9 @@ package com.hasan;
 public class Main {
     public static void main(String[] args){
         Car seat = new Car();
-        Car seatIbiza = new Car("Hasan", "Ibiza", 2014, "1.2 TSI", "Black", 83500L);
+        Car seatIbiza = new Car("Hasan", "Ibiza", "1.2 TSI", 2014, "Black", 4, 5, 83500L, true);
 
         Car porsche = new Car();
-
 
         seat.setModel("Ibiza");
         porsche.setModel("911");
