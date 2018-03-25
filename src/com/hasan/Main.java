@@ -22,10 +22,20 @@ public class Main {
         System.out.println("Seat millage is: " + seatIbiza.getMillage());
 
 
+        //Initial Refill
         Calendar refill = Calendar.getInstance();
         refill.set(2018, Calendar.MARCH, 11);
         System.out.println("Calendar Date: "+ refill.getTime());
-        seatIbiza.refuel(refill, 83500L, 240, 40, 500, 0);
+        seatIbiza.refuel(refill, 83500L, 240, 40, 480, 0);
         System.out.println("Last Refuel Cost: "+ seatIbiza.getFuelConsumption().getCost());
+
+        //Second Refill
+        Calendar refill2 = Calendar.getInstance();
+        refill2.set(2018, Calendar.MARCH, 23);
+        System.out.println("Calendar Date: "+ refill2.getTime());
+        seatIbiza.refuel(refill2, 83980L, 245, 40, 500, 483);
+        System.out.println("Last Refuel Cost: "+ seatIbiza.getFuelConsumption().getCost());
+
+
     }
 }
