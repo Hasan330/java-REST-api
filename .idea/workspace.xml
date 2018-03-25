@@ -1,25 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c1e0f1ff-f874-4eed-94ec-73aa31cce41d" name="Default" comment="Creating Constructors">
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/artifacts/Classes_jar.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/Classes.iml" afterPath="$PROJECT_DIR$/Classes.iml" />
-      <change beforePath="$PROJECT_DIR$/out/production/Classes/com/hasan/Car.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/Classes/com/hasan/FuelConsumption.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/Classes/com/hasan/Main.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/Classes/com/hasan/Vehicle.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/Classes/com/hasan/longDistances.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/com/hasan/Car.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/com/hasan/FuelConsumption.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/com/hasan/Main.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/com/hasan/Vehicle.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/com/hasan/longDistances.java" afterPath="" />
-    </list>
+    <list default="true" id="c1e0f1ff-f874-4eed-94ec-73aa31cce41d" name="Default" comment="Creating Constructors" />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
