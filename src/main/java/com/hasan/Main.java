@@ -5,9 +5,9 @@ import java.util.Calendar;
 
 public class Main {
     public static void main(String[] args){
-        Car seat = new Car();
-        Car seatIbiza = new Car("Hasan", "Ibiza", "1.2 TSI", 2014, "Black", 4, 5, 83500L, true);
-        Car porsche = new Car();
+        com.hasan.Car seat = new com.hasan.Car();
+        com.hasan.Car seatIbiza = new com.hasan.Car("Hasan", "Ibiza", "1.2 TSI", 2014, "Black", 4, 5, 83500L, true);
+        com.hasan.Car porsche = new com.hasan.Car();
 
         seat.setModel("Ibiza");
         porsche.setModel("911");
