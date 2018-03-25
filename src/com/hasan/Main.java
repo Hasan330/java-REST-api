@@ -25,7 +25,7 @@ public class Main {
         Calendar refill = Calendar.getInstance();
         refill.set(2018, Calendar.MARCH, 11);
         System.out.println("Calendar Date: "+ refill.getTime());
-//        seatIbiza.refuel(refill);
-
+        seatIbiza.refuel(refill, 83500L, 240, 40, 500, 0);
+        System.out.println("Last Refuel Cost: "+ seatIbiza.getFuelConsumption().getCost());
     }
 }

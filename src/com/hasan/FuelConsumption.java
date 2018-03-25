@@ -12,11 +12,6 @@ public class FuelConsumption {
 
     private longDistances longDistance;
 
-    public FuelConsumption(Calendar refuelDate, Long initialMillage, int cost, double litresFilled, int proposedDistance, int actualDistance, longDistances longDistance) {
-        this(refuelDate, initialMillage, cost, litresFilled, proposedDistance, actualDistance);
-        this.longDistance = longDistance;
-    }
-
     public FuelConsumption(Calendar refuelDate, Long initialMillage, int cost, double litresFilled, int proposedDistance, int actualDistance) {
         this.refuelDate = refuelDate;
         this.initialMillage = initialMillage;
@@ -25,6 +20,12 @@ public class FuelConsumption {
         this.proposedDistance = proposedDistance;
         this.actualDistance = actualDistance;
     }
+
+    public FuelConsumption(Calendar refuelDate, Long initialMillage, int cost, double litresFilled, int proposedDistance, int actualDistance, longDistances longDistance) {
+        this(refuelDate, initialMillage, cost, litresFilled, proposedDistance, actualDistance);
+        this.longDistance = longDistance;
+    }
+
 
     public Calendar getRefuelDate() {
         return refuelDate;
@@ -53,4 +54,5 @@ public class FuelConsumption {
     public longDistances getLongDistance() {
         return longDistance;
     }
+
 }

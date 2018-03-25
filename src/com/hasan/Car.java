@@ -1,11 +1,15 @@
 package com.hasan;
 
+import java.util.Calendar;
+
 public class Car extends Vehicle{
     private int     doors;
     private String  model;
     private long    millage;
     private int     gears;
     private boolean isManual;
+    private FuelConsumption fuelConsumption;
+
 
     public Car(){
 
@@ -43,6 +47,18 @@ public class Car extends Vehicle{
 
     public void incrementMillage(int distance){
         this.millage += distance;
+    }
+
+
+    //Getter for fuel consumption
+    public FuelConsumption getFuelConsumption() {
+        return fuelConsumption;
+    }
+
+    //Adding the refuel method
+    public void refuel(Calendar refuelDate, Long initialMillage, int cost, double litresFilled, int proposedDistance, int actualDistance){
+        System.out.println("Refueling Vehicle with "+ cost + " Sheikels on " + refuelDate.getTime());
+        this.fuelConsumption = new FuelConsumption(refuelDate, initialMillage, cost, litresFilled, proposedDistance, actualDistance);
     }
 
 }
