@@ -9,7 +9,7 @@ public class Car extends Vehicle{
     private long    millage;
     private int     gears;
     private boolean isManual;
-    private FuelConsumption fuelConsumption;
+    private FuelConsumption lastFuelConsumption;
 
     //Adding an array-list for fuel consumption
     ArrayList<FuelConsumption> FuelConsumptionArrayList = new ArrayList<FuelConsumption>();
@@ -57,8 +57,8 @@ public class Car extends Vehicle{
 
 
     //Getter for fuel consumption
-    public FuelConsumption getFuelConsumption() {
-        return fuelConsumption;
+    public FuelConsumption getLastFuelConsumption() {
+        return lastFuelConsumption;
     }
 
     public ArrayList<FuelConsumption> getFuelConsumptionArrayList() {
@@ -68,9 +68,9 @@ public class Car extends Vehicle{
     //Adding the refuel method
     public void refuel(int id, Calendar refuelDate, Long initialMillage, int cost, double litresFilled, int proposedDistance, int actualDistance){
         System.out.println("Refueling Vehicle with "+ cost + " Sheikels on " + refuelDate.getTime() + "\n transaction id= " + id);
-        this.fuelConsumption = new FuelConsumption(id, refuelDate, initialMillage, cost, litresFilled, proposedDistance, actualDistance);
+        this.lastFuelConsumption = new FuelConsumption(id, refuelDate, initialMillage, cost, litresFilled, proposedDistance, actualDistance);
 
-        FuelConsumptionArrayList.add(fuelConsumption);
+        FuelConsumptionArrayList.add(lastFuelConsumption);
     }
 
 }

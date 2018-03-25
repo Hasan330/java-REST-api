@@ -27,14 +27,14 @@ public class Main {
         refill.set(2018, Calendar.MARCH, 11);
         System.out.println("Calendar Date: "+ refill.getTime());
         seatIbiza.refuel(1, refill, 83500L, 240, 40, 480, 0);
-        System.out.println("Last Refuel Cost: "+ seatIbiza.getFuelConsumption().getCost());
+        System.out.println("Last Refuel Cost: "+ seatIbiza.getLastFuelConsumption().getCost());
 
         //Second Refill
         Calendar refill2 = Calendar.getInstance();
         refill2.set(2018, Calendar.MARCH, 23);
         System.out.println("Calendar Date: "+ refill2.getTime());
         seatIbiza.refuel(2, refill2, 83980L, 245, 40, 500, 483);
-        System.out.println("Last Refuel Cost: "+ seatIbiza.getFuelConsumption().getCost());
+        System.out.println("Last Refuel Cost: "+ seatIbiza.getLastFuelConsumption().getCost());
 
         seatIbiza.getFuelConsumptionArrayList().forEach(x -> System.out.println("ID= "+ x.getId() + " Cost= " +  x.getCost()));;
 
