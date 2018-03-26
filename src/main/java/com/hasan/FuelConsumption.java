@@ -1,12 +1,25 @@
 package com.hasan;
 
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.*;
 import java.util.Calendar;
 
+@Entity
+@Table(name= "consumption_table")
 public class FuelConsumption {
+
+    @Id
+    @Column(name= "id")
+    @GeneratedValue(generator = "incrementator")
+    @GenericGenerator(name = "incrementator", strategy = "increment" )
     private int        id;
+
+    @Column(name= "cost")
+    private int        cost;
+
     private Calendar   refuelDate;
     private Long       initialMillage;
-    private int        cost;
     private double     litresFilled;
     private int        proposedDistance;
     private int        actualDistance;
@@ -28,6 +41,13 @@ public class FuelConsumption {
         this.longDistance = longDistance;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setCost(int cost) {
+        this.cost = cost;
+    }
 
     public Calendar getRefuelDate() {
         return refuelDate;

@@ -1,11 +1,25 @@
 package com.hasan;
 
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+@Entity
+@Table(name= "cars_table")
 public class Car extends Vehicle{
-    private int             doors;
+
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(generator = "incrementator")
+    @GenericGenerator(name = "incrementator", strategy = "increment" )
+    private int             id;
+
+    @Column(name = "model")
     private String          model;
+
+    private int             doors;
     private long            millage;
     private int             gears;
     private boolean         isManual;
@@ -27,6 +41,13 @@ public class Car extends Vehicle{
         this.isManual = isManual;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public void setModel(String model){
         String validModel = model.toLowerCase();

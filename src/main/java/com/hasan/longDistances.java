@@ -1,10 +1,21 @@
 package com.hasan;
 
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import java.util.Date;
 
 public class longDistances {
-    //id should be auto-incremented
+
+    @Id
+    @Column(name= "id")
+    @GeneratedValue(generator = "incrementator")
+    @GenericGenerator(name = "incrementator", strategy = "increment" )
     private int id;
+
+
     private String source;
     private String destination;
     private int distance;
