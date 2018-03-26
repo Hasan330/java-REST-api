@@ -24,7 +24,7 @@ public class FuelConsumption {
     private int        proposedDistance;
     private int        actualDistance;
 
-    private longDistances longDistance;
+//    private longDistances longDistance;
 
     public FuelConsumption(int id, Calendar refuelDate, Long initialMillage, int cost, double litresFilled, int proposedDistance, int actualDistance) {
         this.id                = id;
@@ -36,10 +36,10 @@ public class FuelConsumption {
         this.actualDistance    = actualDistance;
     }
 
-    public FuelConsumption(int id, Calendar refuelDate, Long initialMillage, int cost, double litresFilled, int proposedDistance, int actualDistance, longDistances longDistance) {
-        this(id, refuelDate, initialMillage, cost, litresFilled, proposedDistance, actualDistance);
-        this.longDistance = longDistance;
-    }
+//    public FuelConsumption(int id, Calendar refuelDate, Long initialMillage, int cost, double litresFilled, int proposedDistance, int actualDistance, longDistances longDistance) {
+//        this(id, refuelDate, initialMillage, cost, litresFilled, proposedDistance, actualDistance);
+//        this.longDistance = longDistance;
+//    }
 
     public void setId(int id) {
         this.id = id;
@@ -77,8 +77,8 @@ public class FuelConsumption {
         return actualDistance;
     }
 
-    public longDistances getLongDistance() {
-        return longDistance;
-    }
+//    public longDistances getLongDistance() {
+//        return longDistance;
+//    }
 
 }

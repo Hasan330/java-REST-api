@@ -3,8 +3,6 @@ package com.hasan;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.Calendar;
 
 @Entity
 @Table(name= "cars_table")
@@ -23,10 +21,10 @@ public class Car extends Vehicle{
     private long            millage;
     private int             gears;
     private boolean         isManual;
-    private FuelConsumption lastFuelConsumption;
+//    private FuelConsumption lastFuelConsumption;
 
     //Adding an array-list for fuel consumption
-    ArrayList<FuelConsumption> FuelConsumptionArrayList = new ArrayList<FuelConsumption>();
+//    ArrayList<FuelConsumption> FuelConsumptionArrayList = new ArrayList<FuelConsumption>();
 
 
     public Car(){
@@ -79,23 +77,23 @@ public class Car extends Vehicle{
     }
 
     //Getter for fuel consumption
-    public FuelConsumption getLastFuelConsumption() {
-        return lastFuelConsumption;
-    }
+//    public FuelConsumption getLastFuelConsumption() {
+//        return lastFuelConsumption;
+//    }
 
-    public ArrayList<FuelConsumption> getFuelConsumptionArrayList() {
-        return FuelConsumptionArrayList;
-    }
+//    public ArrayList<FuelConsumption> getFuelConsumptionArrayList() {
+//        return FuelConsumptionArrayList;
+//    }
 
     //Adding the refuel method
-    public void refuel(int id, Calendar refuelDate, Long initialMillage, int cost, double litresFilled, int proposedDistance, int actualDistance){
-        System.out.println("\nTransaction id: " + id + " -> Refueling Vehicle with "+ cost + " Sheikels on " + refuelDate.getTime());
-        this.lastFuelConsumption = new FuelConsumption(id, refuelDate, initialMillage, cost, litresFilled, proposedDistance, actualDistance);
-
-        FuelConsumptionArrayList.add(lastFuelConsumption);
-
-        //TODO: Use increment millage method as a part of method functionality to dynamically add to car millage when you refuel (optional)
-        incrementMillage(actualDistance);
-    }
+//    public void refuel(int id, Calendar refuelDate, Long initialMillage, int cost, double litresFilled, int proposedDistance, int actualDistance){
+//        System.out.println("\nTransaction id: " + id + " -> Refueling Vehicle with "+ cost + " Sheikels on " + refuelDate.getTime());
+//        this.lastFuelConsumption = new FuelConsumption(id, refuelDate, initialMillage, cost, litresFilled, proposedDistance, actualDistance);
+//
+//        FuelConsumptionArrayList.add(lastFuelConsumption);
+//
+//        //TODO: Use increment millage method as a part of method functionality to dynamically add to car millage when you refuel (optional)
+//        incrementMillage(actualDistance);
+//    }
 
 }
