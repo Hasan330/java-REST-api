@@ -5,7 +5,7 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 
 @Entity
-@Table(name= "cars3")
+@Table(name= "cars")
 public class Car extends Vehicle{
 
     @Id
@@ -55,12 +55,7 @@ public class Car extends Vehicle{
     }
 
     public void setModel(String model){
-        String validModel = model.toLowerCase();
-        if(validModel.equals("ibiza") || validModel.equals("leon")){
-            this.model = model;
-        } else {
-            this.model = "Unknown";
-        }
+        this.model = model;
     }
 
     public String getModel(){

@@ -7,14 +7,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "owners3")
+@Table(name = "owners")
 public class Owner {
 
     @Id
     @Column(name="OWNER_ID")
     @GeneratedValue(generator = "incrementator")
     @GenericGenerator(name = "incrementator", strategy = "increment" )
-    private long id;
+    private int id;
 
     @Column(name="name")
     private String name;
@@ -44,7 +44,7 @@ public class Owner {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -65,8 +65,13 @@ public class Owner {
         this.cars = cars;
     }
 
-    public void addCar(Car cars){
-        System.out.println("Adding car " + cars.getBrand() + " " +  cars.getModel() );
-        this.cars.add(cars);
+    public void addCar(Car car){
+        System.out.println("Adding car " + car.getBrand() + " " +  car.getModel() );
+        this.cars.add(car);
+    }
+
+    public void printCars(){
+        System.out.println("\n"+this.getName() + " has an id: " + this.getId() + " and owns the following cars:");
+        this.getCars().forEach(x -> System.out.println(x.getBrand() + " " +  x.getModel()));
     }
 }

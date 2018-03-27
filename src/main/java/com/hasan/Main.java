@@ -17,11 +17,12 @@ public class Main {
         Car seat = new com.hasan.Car();
         Car seatIbiza = new com.hasan.Car("Seat","Ibiza", "1.2 TSI", 2014, "Black", 4, 5, 83500L, true);
         Car passat = new Car("VolksWagon", "Passat", "2.0", 2008, "Silver", 4, 6, 120000L, false);
-        Car porsche = new com.hasan.Car();
+        Car porsche = new com.hasan.Car("Porsche", "911", "2.6 Turbo", 2015, "Black", 2, 6, 20000L, false);
 
-//        hasan.setCars(Collections.singletonList(seatIbiza));
         hasan.addCar(passat);
         hasan.addCar(seatIbiza);
+
+        sawsan.addCar(porsche);
 
 
         seat.setModel("Ibiza");
@@ -30,8 +31,8 @@ public class Main {
         System.out.println("Seat initial millage is: " + seatIbiza.getMillage());
         System.out.println("Seat Ibiza owner ID is: " + seatIbiza.getOwnerId());
 
-        System.out.println("\nUser Cars: ");
-        hasan.getCars().forEach(x -> System.out.println(x.getBrand() + " " +  x.getModel()));
+        hasan.printCars();
+        sawsan.printCars();
 
 
         EntityManager entityManager = entityManagerFactory.createEntityManager();
@@ -39,6 +40,7 @@ public class Main {
 
         entityManager.persist(seatIbiza);
         entityManager.persist(passat);
+        entityManager.persist(porsche);
 
         entityManager.persist(sawsan);
         entityManager.persist(hasan);
