@@ -14,6 +14,9 @@ public class Car extends Vehicle{
     @GenericGenerator(name = "incrementator", strategy = "increment" )
     private int             car_id;
 
+
+    @Column(name = "brand")
+    private String brand;
     @Column(name = "model")
     private String          model;
     @Column(name = "doors")
@@ -29,13 +32,13 @@ public class Car extends Vehicle{
     @Column(name = "CAR_OWNER_ID")
     private int ownerId;
 
-
     public Car(){
 
     }
 
-    public Car(String owner, String model, String engine, int year, String color, int doors, int gears, long millage, boolean isManual) {
-        super(year, owner, engine, color);
+    public Car(String brand, String model, String engine, int year, String color, int doors, int gears, long millage, boolean isManual) {
+        super(year, engine, color);
+        this.brand    = brand;
         this.model    = model;
         this.doors    = doors;
         this.millage  = millage;
@@ -80,4 +83,15 @@ public class Car extends Vehicle{
         this.millage += distance;
     }
 
+    public int getOwnerId() {
+        return ownerId;
+    }
+
+    public String getBrand() {
+        return brand;
+    }
+
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
 }

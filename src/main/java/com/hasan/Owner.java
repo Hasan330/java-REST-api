@@ -22,8 +22,20 @@ public class Owner {
     @JoinColumn(name = "CAR_OWNER_ID", referencedColumnName = "OWNER_ID")
     private List<Car> cars;
 
-    public Owner(String name) {
+    @Column(name = "age")
+    private  int age;
+
+    public Owner(String name, int age) {
         this.name = name;
+        this.age = age;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
     }
 
     public long getId() {

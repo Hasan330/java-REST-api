@@ -4,7 +4,6 @@ package com.hasan;
 public abstract class Vehicle {
     private int year;
 
-    private String owner;
     private String engine;
     private String color;
 
@@ -12,9 +11,8 @@ public abstract class Vehicle {
 
     }
 
-    public Vehicle(int year, String owner, String engine, String color) {
+    public Vehicle(int year, String engine, String color) {
         this.year   = year;
-        this.owner  = owner;
         this.engine = engine;
         this.color  = color;
     }
@@ -27,11 +25,6 @@ public abstract class Vehicle {
     public int getYear() {
         return year;
     }
-
-    public String getOwner() {
-        return owner;
-    }
-
 
     public String getEngine() {
         return engine;
