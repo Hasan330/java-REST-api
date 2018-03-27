@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name= "long_distances3")
+@Table(name= "long_distances5")
 public class longDistances {
 
     @Id

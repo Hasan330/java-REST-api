@@ -24,15 +24,11 @@ public class Main {
 
         sawsan.addCar(porsche);
 
-
         seat.setModel("Ibiza");
         porsche.setModel("911");
 
         System.out.println("Seat initial millage is: " + seatIbiza.getMillage());
         System.out.println("Seat Ibiza owner ID is: " + seatIbiza.getOwnerId());
-
-        hasan.printCars();
-        sawsan.printCars();
 
 
         EntityManager entityManager = entityManagerFactory.createEntityManager();
@@ -46,6 +42,9 @@ public class Main {
         entityManager.persist(hasan);
 
         entityManager.getTransaction().commit();
+
+        hasan.printCars();
+        sawsan.printCars();
 
         entityManagerFactory.close();
 
