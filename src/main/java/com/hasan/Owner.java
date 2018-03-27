@@ -1,5 +1,7 @@
 package com.hasan;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -9,6 +11,8 @@ public class Owner {
 
     @Id
     @Column(name="OWNER_ID")
+    @GeneratedValue(generator = "incrementator")
+    @GenericGenerator(name = "incrementator", strategy = "increment" )
     private long id;
 
     @Column(name="name")
@@ -18,8 +22,7 @@ public class Owner {
     @JoinColumn(name = "CAR_OWNER_ID", referencedColumnName = "OWNER_ID")
     private List<Car> cars;
 
-    public Owner(long id, String name) {
-        this.id = id;
+    public Owner(String name) {
         this.name = name;
     }
 
