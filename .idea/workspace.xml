@@ -1,20 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c1e0f1ff-f874-4eed-94ec-73aa31cce41d" name="Default" comment="Creating Constructors">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/hasan/Owner.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/hasan/Owner.class" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hasan/Car.java" afterPath="$PROJECT_DIR$/src/main/java/com/hasan/Car.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hasan/FuelConsumption.java" afterPath="$PROJECT_DIR$/src/main/java/com/hasan/FuelConsumption.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hasan/Main.java" afterPath="$PROJECT_DIR$/src/main/java/com/hasan/Main.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hasan/longDistances.java" afterPath="$PROJECT_DIR$/src/main/java/com/hasan/longDistances.java" />
-      <change beforePath="$PROJECT_DIR$/target/Classes.jar" afterPath="$PROJECT_DIR$/target/Classes.jar" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hasan/Car.class" afterPath="$PROJECT_DIR$/target/classes/com/hasan/Car.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hasan/FuelConsumption.class" afterPath="$PROJECT_DIR$/target/classes/com/hasan/FuelConsumption.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hasan/Main.class" afterPath="$PROJECT_DIR$/target/classes/com/hasan/Main.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hasan/longDistances.class" afterPath="$PROJECT_DIR$/target/classes/com/hasan/longDistances.class" />
-    </list>
+    <list default="true" id="c1e0f1ff-f874-4eed-94ec-73aa31cce41d" name="Default" comment="Creating Constructors" />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
