@@ -3,10 +3,11 @@ package com.hasan;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "owners")
+@Table(name = "owners3")
 public class Owner {
 
     @Id
@@ -20,7 +21,8 @@ public class Owner {
 
     @OneToMany
     @JoinColumn(name = "CAR_OWNER_ID", referencedColumnName = "OWNER_ID")
-    private List<Car> cars;
+//    private List<Car> cars;
+    private List<Car> cars = new ArrayList<>();
 
     @Column(name = "age")
     private  int age;
@@ -59,6 +61,12 @@ public class Owner {
     }
 
     public void setCars(List<Car> cars) {
+        cars.forEach( car -> System.out.println("Setting cars to " + car.getBrand() + " " + car.getModel()));
         this.cars = cars;
+    }
+
+    public void addCar(Car cars){
+        System.out.println("Adding car " + cars.getBrand() + " " +  cars.getModel() );
+        this.cars.add(cars);
     }
 }

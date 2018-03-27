@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.util.Calendar;
 
 @Entity
-@Table(name= "consumption")
+@Table(name= "consumption3")
 public class FuelConsumption {
 
     @Id
