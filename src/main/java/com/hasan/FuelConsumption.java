@@ -6,14 +6,14 @@ import javax.persistence.*;
 import java.util.Calendar;
 
 @Entity
-@Table(name= "consumption_table")
+@Table(name= "consumption")
 public class FuelConsumption {
 
     @Id
-    @Column(name= "id")
+    @Column(name= "refill_id")
     @GeneratedValue(generator = "incrementator")
     @GenericGenerator(name = "incrementator", strategy = "increment" )
-    private int        id;
+    private int refill_id;
 
     @Column(name= "cost")
     private int        cost;
@@ -24,10 +24,12 @@ public class FuelConsumption {
     private int        proposedDistance;
     private int        actualDistance;
 
-//    private longDistances longDistance;
+//    @ManyToOne
+//    @JoinColumn(name = "refill_id")
+//    private Car car;
 
-    public FuelConsumption(int id, Calendar refuelDate, Long initialMillage, int cost, double litresFilled, int proposedDistance, int actualDistance) {
-        this.id                = id;
+    public FuelConsumption(int refill_id, Calendar refuelDate, Long initialMillage, int cost, double litresFilled, int proposedDistance, int actualDistance) {
+        this.refill_id = refill_id;
         this.refuelDate        = refuelDate;
         this.initialMillage    = initialMillage;
         this.cost              = cost;
@@ -36,13 +38,17 @@ public class FuelConsumption {
         this.actualDistance    = actualDistance;
     }
 
-//    public FuelConsumption(int id, Calendar refuelDate, Long initialMillage, int cost, double litresFilled, int proposedDistance, int actualDistance, longDistances longDistance) {
-//        this(id, refuelDate, initialMillage, cost, litresFilled, proposedDistance, actualDistance);
-//        this.longDistance = longDistance;
+
+//    public Car getCar() {
+//        return car;
+//    }
+//
+//    public void setCar(Car car) {
+//        this.car = car;
 //    }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setRefill_id(int refill_id) {
+        this.refill_id = refill_id;
     }
 
     public void setCost(int cost) {
@@ -57,8 +63,8 @@ public class FuelConsumption {
         return initialMillage;
     }
 
-    public int getId() {
-        return id;
+    public int getRefill_id() {
+        return refill_id;
     }
 
     public int getCost() {

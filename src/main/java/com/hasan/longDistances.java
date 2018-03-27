@@ -2,18 +2,18 @@ package com.hasan;
 
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 
+@Entity
+@Table(name= "long_distances")
 public class longDistances {
 
     @Id
-    @Column(name= "id")
+    @Column(name= "longDistance_id")
     @GeneratedValue(generator = "incrementator")
     @GenericGenerator(name = "incrementator", strategy = "increment" )
-    private int id;
+    private int longDistance_id;
 
 
     private String source;
@@ -28,8 +28,8 @@ public class longDistances {
         this.dateOfTrip = dateOfTrip;
     }
 
-    public int getId() {
-        return id;
+    public int getLongDistance_id() {
+        return longDistance_id;
     }
 
     public String getSource() {

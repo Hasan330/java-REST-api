@@ -5,26 +5,29 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 
 @Entity
-@Table(name= "cars_table")
+@Table(name= "cars")
 public class Car extends Vehicle{
 
     @Id
-    @Column(name = "id")
+    @Column(name = "car_id")
     @GeneratedValue(generator = "incrementator")
     @GenericGenerator(name = "incrementator", strategy = "increment" )
-    private int             id;
+    private int             car_id;
 
     @Column(name = "model")
     private String          model;
-
+    @Column(name = "doors")
     private int             doors;
+    @Column(name = "millage")
     private long            millage;
+    @Column(name = "gears")
     private int             gears;
+    @Column(name = "isManual")
     private boolean         isManual;
-//    private FuelConsumption lastFuelConsumption;
 
-    //Adding an array-list for fuel consumption
-//    ArrayList<FuelConsumption> FuelConsumptionArrayList = new ArrayList<FuelConsumption>();
+
+    @Column(name = "CAR_OWNER_ID")
+    private int ownerId;
 
 
     public Car(){
@@ -33,18 +36,19 @@ public class Car extends Vehicle{
 
     public Car(String owner, String model, String engine, int year, String color, int doors, int gears, long millage, boolean isManual) {
         super(year, owner, engine, color);
+        this.model    = model;
         this.doors    = doors;
         this.millage  = millage;
         this.gears    = gears;
         this.isManual = isManual;
     }
 
-    public int getId() {
-        return id;
+    public int getCar_id() {
+        return car_id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setCar_id(int car_id) {
+        this.car_id = car_id;
     }
 
     public void setModel(String model){
@@ -75,25 +79,5 @@ public class Car extends Vehicle{
         }
         this.millage += distance;
     }
-
-    //Getter for fuel consumption
-//    public FuelConsumption getLastFuelConsumption() {
-//        return lastFuelConsumption;
-//    }
-
-//    public ArrayList<FuelConsumption> getFuelConsumptionArrayList() {
-//        return FuelConsumptionArrayList;
-//    }
-
-    //Adding the refuel method
-//    public void refuel(int id, Calendar refuelDate, Long initialMillage, int cost, double litresFilled, int proposedDistance, int actualDistance){
-//        System.out.println("\nTransaction id: " + id + " -> Refueling Vehicle with "+ cost + " Sheikels on " + refuelDate.getTime());
-//        this.lastFuelConsumption = new FuelConsumption(id, refuelDate, initialMillage, cost, litresFilled, proposedDistance, actualDistance);
-//
-//        FuelConsumptionArrayList.add(lastFuelConsumption);
-//
-//        //TODO: Use increment millage method as a part of method functionality to dynamically add to car millage when you refuel (optional)
-//        incrementMillage(actualDistance);
-//    }
 
 }
