@@ -6,8 +6,8 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name= "long_distances")
-public class longDistances {
+@Table(name= "distances")
+public class LongDistances {
 
     @Id
     @Column(name= "id")
@@ -21,7 +21,10 @@ public class longDistances {
     private int distance;
     private Date dateOfTrip;
 
-    public longDistances(String source, String destination, int distance, Date dateOfTrip) {
+    @Column(name = "REFILL_ID")
+    private int refillId;
+
+    public LongDistances(String source, String destination, int distance, Date dateOfTrip) {
         this.source = source;
         this.destination = destination;
         this.distance = distance;
