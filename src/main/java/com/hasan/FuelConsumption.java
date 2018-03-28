@@ -31,7 +31,7 @@ public class FuelConsumption {
 
     @OneToMany
     @JoinColumn(name = "REFILL_ID", referencedColumnName = "id")
-    private List<LongDistances> longDistances = new ArrayList<>();
+    private List<LongDistance> longDistances = new ArrayList<>();
 
 
     public FuelConsumption(Calendar refuelDate, Long initialMillage, int cost, double litresFilled, int proposedDistance, int actualDistance) {
@@ -87,15 +87,15 @@ public class FuelConsumption {
         this.carId = carId;
     }
 
-    public List<com.hasan.LongDistances> getLongDistances() {
+    public List<LongDistance> getLongDistances() {
         return longDistances;
     }
 
-    public void setLongDistances(List<com.hasan.LongDistances> longDistances) {
+    public void setLongDistances(List<LongDistance> longDistances) {
         this.longDistances = longDistances;
     }
 
-    public void addLongDistance(LongDistances longDistance){
+    public void addLongDistance(LongDistance longDistance){
         this.longDistances.add(longDistance);
 
     }
