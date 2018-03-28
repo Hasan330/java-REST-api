@@ -20,11 +20,12 @@ public class Main {
         Car passat    = new Car("VolksWagon", "Passat", "2.0", 2008, "Silver", 4, 6, 120000L, false);
         Car porsche   = new Car("Porsche", "911", "2.6 Turbo", 2015, "Black", 2, 6, 20000L, false);
 
+        //Assign cars to users
         hasan.addCar(passat);
         hasan.addCar(seatIbiza);
-
         sawsan.addCar(porsche);
 
+        //Refills
         Calendar refill = Calendar.getInstance();
         refill.set(2018, Calendar.MARCH, 11);
         FuelConsumption initialRefill = new FuelConsumption(refill, 83500L, 240, 38, 480, 0);
@@ -34,17 +35,23 @@ public class Main {
         Calendar refill3 = Calendar.getInstance();
         refill3.set(2018, Calendar.MARCH, 25);
         FuelConsumption thirdRefill = new FuelConsumption(refill3, 2600L, 450, 60, 600, 510);
-
         Calendar refill4 = Calendar.getInstance();
         refill4.set(2018, Calendar.APRIL, 30);
         FuelConsumption fourthRefill = new FuelConsumption(refill4, 5600L, 40, 7, 80, 100);
 
-
-        //Add fuel Consumption
+        //Assign refills to cars
         seatIbiza.addFuelConsumption(initialRefill);
         seatIbiza.addFuelConsumption(secondRefill);
         passat.addFuelConsumption(thirdRefill);
         porsche.addFuelConsumption(fourthRefill);
+
+        //Add long distances
+        Calendar tubasRamallahDate1 = Calendar.getInstance();
+        tubasRamallahDate1.set(2018, Calendar.MARCH, 14);
+        LongDistance tubasRamallah1 = new LongDistance("Tubas", "Ramallah", 85, tubasRamallahDate1);
+
+        //Assign longDistance to refill
+        initialRefill.addLongDistance(tubasRamallah1);
 
         //Persist data
         entityManager.persist(sawsan);
@@ -53,6 +60,7 @@ public class Main {
         entityManager.persist(secondRefill);
         entityManager.persist(thirdRefill);
         entityManager.persist(fourthRefill);
+        entityManager.persist(tubasRamallah1);
         entityManager.persist(seatIbiza);
         entityManager.persist(passat);
         entityManager.persist(porsche);

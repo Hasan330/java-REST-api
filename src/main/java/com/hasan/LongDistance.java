@@ -3,11 +3,11 @@ package com.hasan;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.util.Calendar;
 
 @Entity
-@Table(name= "long_distances")
-public class longDistances {
+@Table(name= "distances")
+public class LongDistance {
 
     @Id
     @Column(name= "id")
@@ -15,13 +15,15 @@ public class longDistances {
     @GenericGenerator(name = "incrementator", strategy = "increment" )
     private int longDistance_id;
 
-
     private String source;
     private String destination;
     private int distance;
-    private Date dateOfTrip;
+    private Calendar dateOfTrip;
 
-    public longDistances(String source, String destination, int distance, Date dateOfTrip) {
+    @Column(name = "REFILL_ID")
+    private int refillId;
+
+    public LongDistance(String source, String destination, int distance, Calendar dateOfTrip) {
         this.source = source;
         this.destination = destination;
         this.distance = distance;
@@ -40,11 +42,11 @@ public class longDistances {
         return destination;
     }
 
-    public int getDistance() {
-        return distance;
+    public Calendar getDateOfTrip() {
+        return dateOfTrip;
     }
 
-    public Date getDateOfTrip() {
-        return dateOfTrip;
+    public void setDateOfTrip(Calendar dateOfTrip) {
+        this.dateOfTrip = dateOfTrip;
     }
 }

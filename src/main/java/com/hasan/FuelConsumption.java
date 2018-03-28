@@ -3,7 +3,9 @@ package com.hasan;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 @Entity
 @Table(name= "consumption")
@@ -26,6 +28,11 @@ public class FuelConsumption {
 
     @Column(name = "CAR_ID")
     private int carId;
+
+    @OneToMany
+    @JoinColumn(name = "REFILL_ID", referencedColumnName = "id")
+    private List<LongDistance> longDistances = new ArrayList<>();
+
 
     public FuelConsumption(Calendar refuelDate, Long initialMillage, int cost, double litresFilled, int proposedDistance, int actualDistance) {
         this.refuelDate        = refuelDate;
@@ -80,4 +87,16 @@ public class FuelConsumption {
         this.carId = carId;
     }
 
+    public List<LongDistance> getLongDistances() {
+        return longDistances;
+    }
+
+    public void setLongDistances(List<LongDistance> longDistances) {
+        this.longDistances = longDistances;
+    }
+
+    public void addLongDistance(LongDistance longDistance){
+        this.longDistances.add(longDistance);
+
+    }
 }
