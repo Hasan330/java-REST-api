@@ -3,34 +3,40 @@ package com.hasan;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
-@Table(name= "cars5")
+@Table(name= "cars")
 public class Car extends Vehicle{
 
     @Id
-    @Column(name = "car_id")
+    @Column(name = "id")
     @GeneratedValue(generator = "incrementator")
     @GenericGenerator(name = "incrementator", strategy = "increment" )
-    private int             car_id;
+    private int id;
 
 
     @Column(name = "brand")
     private String brand;
     @Column(name = "model")
-    private String          model;
+    private String model;
     @Column(name = "doors")
-    private int             doors;
+    private int doors;
     @Column(name = "millage")
-    private long            millage;
+    private long millage;
     @Column(name = "gears")
-    private int             gears;
+    private int gears;
     @Column(name = "isManual")
-    private boolean         isManual;
+    private boolean isManual;
 
 
     @Column(name = "CAR_OWNER_ID")
     private int ownerId;
+
+    @OneToMany
+    @JoinColumn(name = "CAR_ID", referencedColumnName = "id")
+    private List<FuelConsumption> fuelConsumption = new ArrayList<>();
 
     public Car(){
 
@@ -46,12 +52,12 @@ public class Car extends Vehicle{
         this.isManual = isManual;
     }
 
-    public int getCar_id() {
-        return car_id;
+    public int getId() {
+        return id;
     }
 
-    public void setCar_id(int car_id) {
-        this.car_id = car_id;
+    public void setId(int car_id) {
+        this.id = car_id;
     }
 
     public void setModel(String model){
@@ -88,5 +94,19 @@ public class Car extends Vehicle{
 
     public void setBrand(String brand) {
         this.brand = brand;
+    }
+
+    public List<FuelConsumption> getFuelConsumption() {
+        return fuelConsumption;
+    }
+
+    public void setFuelConsumption(List<FuelConsumption> fuelConsumption) {
+        this.fuelConsumption = fuelConsumption;
+    }
+
+    public void addFuelConsumption(FuelConsumption fuelConsumption) {
+        System.out.println(this.getOwnerId() + " Added fuel consumption for car " + this.getBrand() + " " +  this.getModel());
+        System.out.println("Consumption Cost: " + fuelConsumption.getCost() + " ILS");
+        this.fuelConsumption.add(fuelConsumption);
     }
 }

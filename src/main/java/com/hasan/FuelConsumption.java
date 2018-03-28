@@ -6,11 +6,11 @@ import javax.persistence.*;
 import java.util.Calendar;
 
 @Entity
-@Table(name= "consumption5")
+@Table(name= "consumption")
 public class FuelConsumption {
 
     @Id
-    @Column(name= "refill_id")
+    @Column(name= "id")
     @GeneratedValue(generator = "incrementator")
     @GenericGenerator(name = "incrementator", strategy = "increment" )
     private int refill_id;
@@ -24,12 +24,10 @@ public class FuelConsumption {
     private int        proposedDistance;
     private int        actualDistance;
 
-//    @ManyToOne
-//    @JoinColumn(name = "refill_id")
-//    private Car car;
+    @Column(name = "CAR_ID")
+    private int carId;
 
-    public FuelConsumption(int refill_id, Calendar refuelDate, Long initialMillage, int cost, double litresFilled, int proposedDistance, int actualDistance) {
-        this.refill_id = refill_id;
+    public FuelConsumption(Calendar refuelDate, Long initialMillage, int cost, double litresFilled, int proposedDistance, int actualDistance) {
         this.refuelDate        = refuelDate;
         this.initialMillage    = initialMillage;
         this.cost              = cost;
@@ -37,15 +35,6 @@ public class FuelConsumption {
         this.proposedDistance  = proposedDistance;
         this.actualDistance    = actualDistance;
     }
-
-
-//    public Car getCar() {
-//        return car;
-//    }
-//
-//    public void setCar(Car car) {
-//        this.car = car;
-//    }
 
     public void setRefill_id(int refill_id) {
         this.refill_id = refill_id;
@@ -83,8 +72,12 @@ public class FuelConsumption {
         return actualDistance;
     }
 
-//    public longDistances getLongDistance() {
-//        return longDistance;
-//    }
+    public int getCarId() {
+        return carId;
+    }
+
+    public void setCarId(int carId) {
+        this.carId = carId;
+    }
 
 }

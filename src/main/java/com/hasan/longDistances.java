@@ -6,11 +6,11 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name= "long_distances5")
+@Table(name= "long_distances")
 public class longDistances {
 
     @Id
-    @Column(name= "longDistance_id")
+    @Column(name= "id")
     @GeneratedValue(generator = "incrementator")
     @GenericGenerator(name = "incrementator", strategy = "increment" )
     private int longDistance_id;

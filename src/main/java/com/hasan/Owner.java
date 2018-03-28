@@ -7,11 +7,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "owners5")
+@Table(name = "owners")
 public class Owner {
 
     @Id
-    @Column(name="OWNER_ID")
+    @Column(name="id")
     @GeneratedValue(generator = "incrementator")
     @GenericGenerator(name = "incrementator", strategy = "increment" )
     private int id;
@@ -20,8 +20,7 @@ public class Owner {
     private String name;
 
     @OneToMany
-    @JoinColumn(name = "CAR_OWNER_ID", referencedColumnName = "OWNER_ID")
-//    private List<Car> cars;
+    @JoinColumn(name = "CAR_OWNER_ID", referencedColumnName = "id")
     private List<Car> cars = new ArrayList<>();
 
     @Column(name = "age")
