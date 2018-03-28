@@ -1,20 +1,33 @@
 package com.hasan;
 
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.*;
 import java.util.Calendar;
 
+@Entity
+@Table(name= "consumption")
 public class FuelConsumption {
-    private int        id;
+
+    @Id
+    @Column(name= "id")
+    @GeneratedValue(generator = "incrementator")
+    @GenericGenerator(name = "incrementator", strategy = "increment" )
+    private int refill_id;
+
+    @Column(name= "cost")
+    private int        cost;
+
     private Calendar   refuelDate;
     private Long       initialMillage;
-    private int        cost;
     private double     litresFilled;
     private int        proposedDistance;
     private int        actualDistance;
 
-    private longDistances longDistance;
+    @Column(name = "CAR_ID")
+    private int carId;
 
-    public FuelConsumption(int id, Calendar refuelDate, Long initialMillage, int cost, double litresFilled, int proposedDistance, int actualDistance) {
-        this.id                = id;
+    public FuelConsumption(Calendar refuelDate, Long initialMillage, int cost, double litresFilled, int proposedDistance, int actualDistance) {
         this.refuelDate        = refuelDate;
         this.initialMillage    = initialMillage;
         this.cost              = cost;
@@ -23,11 +36,13 @@ public class FuelConsumption {
         this.actualDistance    = actualDistance;
     }
 
-    public FuelConsumption(int id, Calendar refuelDate, Long initialMillage, int cost, double litresFilled, int proposedDistance, int actualDistance, longDistances longDistance) {
-        this(id, refuelDate, initialMillage, cost, litresFilled, proposedDistance, actualDistance);
-        this.longDistance = longDistance;
+    public void setRefill_id(int refill_id) {
+        this.refill_id = refill_id;
     }
 
+    public void setCost(int cost) {
+        this.cost = cost;
+    }
 
     public Calendar getRefuelDate() {
         return refuelDate;
@@ -37,8 +52,8 @@ public class FuelConsumption {
         return initialMillage;
     }
 
-    public int getId() {
-        return id;
+    public int getRefill_id() {
+        return refill_id;
     }
 
     public int getCost() {
@@ -57,8 +72,12 @@ public class FuelConsumption {
         return actualDistance;
     }
 
-    public longDistances getLongDistance() {
-        return longDistance;
+    public int getCarId() {
+        return carId;
+    }
+
+    public void setCarId(int carId) {
+        this.carId = carId;
     }
 
 }

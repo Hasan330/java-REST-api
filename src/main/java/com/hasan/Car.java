@@ -1,40 +1,67 @@
 package com.hasan;
 
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.*;
 import java.util.ArrayList;
-import java.util.Calendar;
+import java.util.List;
 
+@Entity
+@Table(name= "cars")
 public class Car extends Vehicle{
-    private int             doors;
-    private String          model;
-    private long            millage;
-    private int             gears;
-    private boolean         isManual;
-    private FuelConsumption lastFuelConsumption;
 
-    //Adding an array-list for fuel consumption
-    ArrayList<FuelConsumption> FuelConsumptionArrayList = new ArrayList<FuelConsumption>();
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(generator = "incrementator")
+    @GenericGenerator(name = "incrementator", strategy = "increment" )
+    private int id;
 
+
+    @Column(name = "brand")
+    private String brand;
+    @Column(name = "model")
+    private String model;
+    @Column(name = "doors")
+    private int doors;
+    @Column(name = "millage")
+    private long millage;
+    @Column(name = "gears")
+    private int gears;
+    @Column(name = "isManual")
+    private boolean isManual;
+
+
+    @Column(name = "CAR_OWNER_ID")
+    private int ownerId;
+
+    @OneToMany
+    @JoinColumn(name = "CAR_ID", referencedColumnName = "id")
+    private List<FuelConsumption> fuelConsumption = new ArrayList<>();
 
     public Car(){
 
     }
 
-    public Car(String owner, String model, String engine, int year, String color, int doors, int gears, long millage, boolean isManual) {
-        super(year, owner, engine, color);
+    public Car(String brand, String model, String engine, int year, String color, int doors, int gears, long millage, boolean isManual) {
+        super(year, engine, color);
+        this.brand    = brand;
+        this.model    = model;
         this.doors    = doors;
         this.millage  = millage;
         this.gears    = gears;
         this.isManual = isManual;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int car_id) {
+        this.id = car_id;
+    }
 
     public void setModel(String model){
-        String validModel = model.toLowerCase();
-        if(validModel.equals("ibiza") || validModel.equals("leon")){
-            this.model = model;
-        } else {
-            this.model = "Unknown";
-        }
+        this.model = model;
     }
 
     public String getModel(){
@@ -57,24 +84,29 @@ public class Car extends Vehicle{
         this.millage += distance;
     }
 
-    //Getter for fuel consumption
-    public FuelConsumption getLastFuelConsumption() {
-        return lastFuelConsumption;
+    public int getOwnerId() {
+        return ownerId;
     }
 
-    public ArrayList<FuelConsumption> getFuelConsumptionArrayList() {
-        return FuelConsumptionArrayList;
+    public String getBrand() {
+        return brand;
     }
 
-    //Adding the refuel method
-    public void refuel(int id, Calendar refuelDate, Long initialMillage, int cost, double litresFilled, int proposedDistance, int actualDistance){
-        System.out.println("\nTransaction id: " + id + " -> Refueling Vehicle with "+ cost + " Sheikels on " + refuelDate.getTime());
-        this.lastFuelConsumption = new FuelConsumption(id, refuelDate, initialMillage, cost, litresFilled, proposedDistance, actualDistance);
-
-        FuelConsumptionArrayList.add(lastFuelConsumption);
-
-        //TODO: Use increment millage method as a part of method functionality to dynamically add to car millage when you refuel (optional)
-        incrementMillage(actualDistance);
+    public void setBrand(String brand) {
+        this.brand = brand;
     }
 
+    public List<FuelConsumption> getFuelConsumption() {
+        return fuelConsumption;
+    }
+
+    public void setFuelConsumption(List<FuelConsumption> fuelConsumption) {
+        this.fuelConsumption = fuelConsumption;
+    }
+
+    public void addFuelConsumption(FuelConsumption fuelConsumption) {
+        System.out.println(this.getOwnerId() + " Added fuel consumption for car " + this.getBrand() + " " +  this.getModel());
+        System.out.println("Consumption Cost: " + fuelConsumption.getCost() + " ILS");
+        this.fuelConsumption.add(fuelConsumption);
+    }
 }
