@@ -13,7 +13,7 @@ public class FuelConsumption {
     @Column(name= "id")
     @GeneratedValue(generator = "incrementator")
     @GenericGenerator(name = "incrementator", strategy = "increment" )
-    private int refill_id;
+    private int id;
 
     @Column(name= "cost")
     private int        cost;
@@ -36,8 +36,8 @@ public class FuelConsumption {
         this.actualDistance    = actualDistance;
     }
 
-    public void setRefill_id(int refill_id) {
-        this.refill_id = refill_id;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public void setCost(int cost) {
@@ -52,8 +52,8 @@ public class FuelConsumption {
         return initialMillage;
     }
 
-    public int getRefill_id() {
-        return refill_id;
+    public int getId() {
+        return id;
     }
 
     public int getCost() {

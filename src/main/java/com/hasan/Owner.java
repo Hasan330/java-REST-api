@@ -19,12 +19,13 @@ public class Owner {
     @Column(name="name")
     private String name;
 
+    @Column(name = "age")
+    private  int age;
+
     @OneToMany
     @JoinColumn(name = "CAR_OWNER_ID", referencedColumnName = "id")
     private List<Car> cars = new ArrayList<>();
 
-    @Column(name = "age")
-    private  int age;
 
     public Owner(String name, int age) {
         this.name = name;
