@@ -38,10 +38,6 @@ public class Car extends Vehicle{
     @JoinColumn(name = "CAR_ID", referencedColumnName = "id")
     private List<FuelConsumption> fuelConsumption = new ArrayList<>();
 
-    public Car(){
-
-    }
-
     public Car(String brand, String model, String engine, int year, String color, int doors, int gears, long millage, boolean isManual) {
         super(year, engine, color);
         this.brand    = brand;
