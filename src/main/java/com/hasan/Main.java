@@ -28,18 +28,25 @@ public class Main {
         sawsan.addCar(porsche);
 
         //Instantiate Refills
-        Calendar refill = Calendar.getInstance();
-        refill.set(2018, Calendar.MARCH, 11);
-        FuelConsumption initialRefill = new FuelConsumption(refill, 83500L, 240, 38, 480, 0);
-        Calendar refill2 = Calendar.getInstance();
-        refill2.set(2018, Calendar.MARCH, 23);
-        FuelConsumption secondRefill = new FuelConsumption(refill2, 83600L, 250, 40, 500, 495);
-        Calendar refill3 = Calendar.getInstance();
-        refill3.set(2018, Calendar.MARCH, 25);
-        FuelConsumption thirdRefill = new FuelConsumption(refill3, 2600L, 450, 60, 600, 510);
-        Calendar refill4 = Calendar.getInstance();
-        refill4.set(2018, Calendar.APRIL, 30);
-        FuelConsumption fourthRefill = new FuelConsumption(refill4, 5600L, 40, 7, 80, 100);
+        FuelConsumption initialRefill = new FuelConsumption(Helpers.createDate(11,3,2018), 83500L, 240, 38, 480, 0);
+        FuelConsumption secondRefill  = new FuelConsumption(Helpers.createDate(24,3,2018), 83600L, 250, 40, 500, 495);
+        FuelConsumption thirdRefill   = new FuelConsumption(Helpers.createDate(2,4,2018), 2600L, 450, 60, 600, 510);
+        FuelConsumption fourthRefill  = new FuelConsumption(Helpers.createDate(4,4,2018), 5600L, 40, 7, 80, 100);
+
+
+
+//        Calendar refill = Calendar.getInstance();
+//        refill.set(2018, Calendar.MARCH, 11);
+//        FuelConsumption initialRefill = new FuelConsumption(refill, 83500L, 240, 38, 480, 0);
+//        Calendar refill2 = Calendar.getInstance();
+//        refill2.set(2018, Calendar.MARCH, 23);
+//        FuelConsumption secondRefill = new FuelConsumption(refill2, 83600L, 250, 40, 500, 495);
+//        Calendar refill3 = Calendar.getInstance();
+//        refill3.set(2018, Calendar.MARCH, 25);
+//        FuelConsumption thirdRefill = new FuelConsumption(refill3, 2600L, 450, 60, 600, 510);
+//        Calendar refill4 = Calendar.getInstance();
+//        refill4.set(2018, Calendar.APRIL, 30);
+//        FuelConsumption fourthRefill = new FuelConsumption(refill4, 5600L, 40, 7, 80, 100);
 
         //Assign refills to cars
         seatIbiza.addFuelConsumption(initialRefill);

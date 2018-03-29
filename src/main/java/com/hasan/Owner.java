@@ -76,11 +76,11 @@ public class Owner {
     }
 
     public void printTotalPayment(){
-        //get all cars owned by that user
-        List<Car> temp = new ArrayList<>();
-        temp = this.getCars();
 
-        //add all payments from those cars
+        //Get all cars owned by that user
+        List<Car> temp = this.getCars();
+
+        //Add all payments from those cars
         int totalUserPayment = 0;
         for(int i=0; i < temp.size(); i++){
             totalUserPayment += temp.get(i).getTotalCost();
