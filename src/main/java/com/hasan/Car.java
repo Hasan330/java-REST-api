@@ -32,9 +32,8 @@ public class Car extends Vehicle{
 
     private int totalCost;
 
-
-    @Column(name = "CAR_OWNER_ID")
-    private int ownerId;
+    @ManyToOne
+    private Owner owner;
 
     @OneToMany
     @JoinColumn(name = "CAR_ID", referencedColumnName = "id")
@@ -82,10 +81,6 @@ public class Car extends Vehicle{
         this.millage += distance;
     }
 
-    public int getOwnerId() {
-        return ownerId;
-    }
-
     public String getBrand() {
         return brand;
     }
@@ -103,7 +98,7 @@ public class Car extends Vehicle{
     }
 
     public void addFuelRefill(FuelConsumption fuelConsumption) {
-        System.out.println("\n"+ this.getOwnerId() + " Added fuel refill for car " + this.getBrand() + " " +  this.getModel());
+        System.out.println("\n"+ this.owner.getName() + " Added fuel refill for car " + this.getBrand() + " " +  this.getModel());
         System.out.println("Refill Cost for " + this.getBrand() + " " + this.getModel() + " is: " + fuelConsumption.getCost() + " ILS");
         this.fuelConsumption.add(fuelConsumption);
         this.totalCost +=  fuelConsumption.getCost();
@@ -115,5 +110,14 @@ public class Car extends Vehicle{
 
     public int getTotalCost(){
         return this.totalCost;
+    }
+
+    public Owner getOwner() {
+        return owner;
+    }
+
+    public void setOwner(Owner owner) {
+        this.owner = owner;
+        this.owner.addCar(this);
     }
 }
