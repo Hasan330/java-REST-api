@@ -22,8 +22,7 @@ public class Owner {
     @Column(name = "age")
     private  int age;
 
-    @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL,
-    fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Car> cars = new ArrayList<>();
 
 

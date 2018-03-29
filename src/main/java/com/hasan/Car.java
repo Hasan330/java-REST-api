@@ -35,8 +35,7 @@ public class Car extends Vehicle{
     @ManyToOne
     private Owner owner;
 
-    @OneToMany
-    @JoinColumn(name = "CAR_ID", referencedColumnName = "id")
+    @OneToMany(mappedBy = "car", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<FuelConsumption> fuelConsumption = new ArrayList<>();
 
     public Car(String brand, String model, String engine, int year, String color, int doors, int gears, long millage, boolean isManual) {

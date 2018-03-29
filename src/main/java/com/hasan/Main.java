@@ -48,10 +48,10 @@ public class Main {
 //        FuelConsumption fourthRefill = new FuelConsumption(refill4, 5600L, 40, 7, 80, 100);
 
         //Assign refills to cars
-        seatIbiza.addFuelRefill(initialRefill);
-        seatIbiza.addFuelRefill(secondRefill);
-        passat.addFuelRefill(thirdRefill);
-        porsche.addFuelRefill(fourthRefill);
+        initialRefill.setCar(seatIbiza);
+        secondRefill.setCar(seatIbiza);
+        thirdRefill.setCar(passat);
+        fourthRefill.setCar(porsche);
 
         //Instantiate long distances
         Calendar tubasRamallahDate1 = Calendar.getInstance();
