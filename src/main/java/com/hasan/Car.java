@@ -112,4 +112,8 @@ public class Car extends Vehicle{
     public void printTotalCost(){
         System.out.println("\nTotal cost for "+ this.getBrand() + " " + this.getModel() + " is: " + this.totalCost);
     }
+
+    public int getTotalCost(){
+        return this.totalCost;
+    }
 }

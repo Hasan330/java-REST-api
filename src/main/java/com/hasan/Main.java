@@ -63,7 +63,9 @@ public class Main {
         passat.printTotalCost();
         porsche.printTotalCost();
 
-        
+        //Calculate total money paid by a certain user
+        hasan.printTotalPayment();
+        sawsan.printTotalPayment();
 
 
         //           **** DATABASE STUFF ****
