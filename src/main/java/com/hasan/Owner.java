@@ -86,6 +86,6 @@ public class Owner {
         }
 
         //Print Outcome
-        System.out.println("\nTotal money paid by " + this.getName() + " on all cars is: " + totalUserPayment);
+        System.out.println("\nTotal money paid by " + this.getName() + " on all cars is: " + totalUserPayment + "\n");
     }
 }
