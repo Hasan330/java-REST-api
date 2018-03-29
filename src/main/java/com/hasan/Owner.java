@@ -22,8 +22,7 @@ public class Owner {
     @Column(name = "age")
     private  int age;
 
-    @OneToMany
-    @JoinColumn(name = "CAR_OWNER_ID", referencedColumnName = "id")
+    @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Car> cars = new ArrayList<>();
 
 
@@ -73,5 +72,20 @@ public class Owner {
     public void printCars(){
         System.out.println("\n"+this.getName() + " has an id: " + this.getId() + " and owns the following cars:");
         this.getCars().forEach(x -> System.out.println(x.getBrand() + " " +  x.getModel()));
+    }
+
+    public void printTotalPayment(){
+
+        //Get all cars owned by that user
+        List<Car> temp = this.getCars();
+
+        //Add all payments from those cars
+        int totalUserPayment = 0;
+        for(int i=0; i < temp.size(); i++){
+            totalUserPayment += temp.get(i).getTotalCost();
+        }
+
+        //Print Outcome
+        System.out.println("\nTotal money paid by " + this.getName() + " on all cars is: " + totalUserPayment + "\n");
     }
 }

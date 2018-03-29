@@ -30,12 +30,12 @@ public class Car extends Vehicle{
     @Column(name = "isManual")
     private boolean isManual;
 
+    private int totalCost;
 
-    @Column(name = "CAR_OWNER_ID")
-    private int ownerId;
+    @ManyToOne
+    private Owner owner;
 
-    @OneToMany
-    @JoinColumn(name = "CAR_ID", referencedColumnName = "id")
+    @OneToMany(mappedBy = "car", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<FuelConsumption> fuelConsumption = new ArrayList<>();
 
     public Car(String brand, String model, String engine, int year, String color, int doors, int gears, long millage, boolean isManual) {
@@ -80,10 +80,6 @@ public class Car extends Vehicle{
         this.millage += distance;
     }
 
-    public int getOwnerId() {
-        return ownerId;
-    }
-
     public String getBrand() {
         return brand;
     }
@@ -100,9 +96,27 @@ public class Car extends Vehicle{
         this.fuelConsumption = fuelConsumption;
     }
 
-    public void addFuelConsumption(FuelConsumption fuelConsumption) {
-        System.out.println(this.getOwnerId() + " Added fuel consumption for car " + this.getBrand() + " " +  this.getModel());
-        System.out.println("Consumption Cost: " + fuelConsumption.getCost() + " ILS");
+    public void addFuelRefill(FuelConsumption fuelConsumption) {
+        System.out.println("\n"+ this.owner.getName() + " Added fuel refill for car " + this.getBrand() + " " +  this.getModel());
+        System.out.println("Refill Cost for " + this.getBrand() + " " + this.getModel() + " is: " + fuelConsumption.getCost() + " ILS");
         this.fuelConsumption.add(fuelConsumption);
+        this.totalCost +=  fuelConsumption.getCost();
+    }
+
+    public void printTotalCost(){
+        System.out.println("Total cost for "+ this.getBrand() + " " + this.getModel() + " is: " + this.totalCost);
+    }
+
+    public int getTotalCost(){
+        return this.totalCost;
+    }
+
+    public Owner getOwner() {
+        return owner;
+    }
+
+    public void setOwner(Owner owner) {
+        this.owner = owner;
+        this.owner.addCar(this);
     }
 }

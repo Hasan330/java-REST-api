@@ -26,11 +26,10 @@ public class FuelConsumption {
     private int        proposedDistance;
     private int        actualDistance;
 
-    @Column(name = "CAR_ID")
-    private int carId;
+   @ManyToOne
+   private Car car;
 
-    @OneToMany
-    @JoinColumn(name = "REFILL_ID", referencedColumnName = "id")
+    @OneToMany(targetEntity = LongDistance.class, mappedBy = "fuelConsumption", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<LongDistance> longDistances = new ArrayList<>();
 
 
@@ -79,14 +78,6 @@ public class FuelConsumption {
         return actualDistance;
     }
 
-    public int getCarId() {
-        return carId;
-    }
-
-    public void setCarId(int carId) {
-        this.carId = carId;
-    }
-
     public List<LongDistance> getLongDistances() {
         return longDistances;
     }
@@ -97,6 +88,14 @@ public class FuelConsumption {
 
     public void addLongDistance(LongDistance longDistance){
         this.longDistances.add(longDistance);
+    }
 
+    public Car getCar() {
+        return car;
+    }
+
+    public void setCar(Car car) {
+        this.car = car;
+        this.car.addFuelRefill(this);
     }
 }
