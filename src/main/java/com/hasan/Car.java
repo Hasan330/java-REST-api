@@ -36,7 +36,7 @@ public class Car extends Vehicle{
     private Owner owner;
 
     @OneToMany(mappedBy = "car", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private List<FuelConsumption> fuelConsumption = new ArrayList<>();
+    private List<Refill> refill = new ArrayList<>();
 
     public Car(String brand, String model, String engine, int year, String color, int doors, int gears, long millage, boolean isManual) {
         super(year, engine, color);
@@ -88,19 +88,19 @@ public class Car extends Vehicle{
         this.brand = brand;
     }
 
-    public List<FuelConsumption> getFuelConsumption() {
-        return fuelConsumption;
+    public List<Refill> getRefill() {
+        return refill;
     }
 
-    public void setFuelConsumption(List<FuelConsumption> fuelConsumption) {
-        this.fuelConsumption = fuelConsumption;
+    public void setRefill(List<Refill> refill) {
+        this.refill = refill;
     }
 
-    public void addFuelRefill(FuelConsumption fuelConsumption) {
+    public void addFuelRefill(Refill refill) {
         System.out.println("\n"+ this.owner.getName() + " Added fuel refill for car " + this.getBrand() + " " +  this.getModel());
-        System.out.println("Refill Cost for " + this.getBrand() + " " + this.getModel() + " is: " + fuelConsumption.getCost() + " ILS");
-        this.fuelConsumption.add(fuelConsumption);
-        this.totalCost +=  fuelConsumption.getCost();
+        System.out.println("Refill Cost for " + this.getBrand() + " " + this.getModel() + " is: " + refill.getCost() + " ILS");
+        this.refill.add(refill);
+        this.totalCost +=  refill.getCost();
     }
 
     public void printTotalCost(){

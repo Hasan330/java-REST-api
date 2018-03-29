@@ -22,15 +22,15 @@ public class Main {
         Car porsche   = new Car("Porsche", "911", "2.6 Turbo", 2015, "Black", 2, 6, 20000L, false);
 
         //Assign cars to users
-        porsche.setOwner(sawsan);
         passat.setOwner(hasan);
         seatIbiza.setOwner(hasan);
+        porsche.setOwner(sawsan);
 
         //Instantiate Refills
-        FuelConsumption initialRefill = new FuelConsumption(Helpers.createDate(11,3,2018), 83500L, 240, 38, 480, 0);
-        FuelConsumption secondRefill  = new FuelConsumption(Helpers.createDate(24,3,2018), 83600L, 250, 40, 500, 495);
-        FuelConsumption thirdRefill   = new FuelConsumption(Helpers.createDate(2,4,2018), 2600L, 450, 60, 600, 510);
-        FuelConsumption fourthRefill  = new FuelConsumption(Helpers.createDate(4,4,2018), 5600L, 40, 7, 80, 100);
+        Refill initialRefill = new Refill(Helpers.createDate(11,3,2018), 83500L, 240, 38, 480, 0);
+        Refill secondRefill  = new Refill(Helpers.createDate(24,3,2018), 83600L, 100, 14, 200, 190);
+        Refill thirdRefill   = new Refill(Helpers.createDate(2,4,2018), 2600L, 450, 60, 600, 510);
+        Refill fourthRefill  = new Refill(Helpers.createDate(4,4,2018), 5600L, 300, 17, 80, 100);
 
 
 //        Calendar refill = Calendar.getInstance();
@@ -56,7 +56,7 @@ public class Main {
         LongDistance tubasRamallah1 = new LongDistance("Tubas", "Ramallah", 85, Helpers.createDate(14,3,2018));
 
         //Assign longDistance to refill
-        tubasRamallah1.setFuelConsumption(initialRefill);
+        tubasRamallah1.setRefill(initialRefill);
 
 
 

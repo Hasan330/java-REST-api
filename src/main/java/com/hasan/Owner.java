@@ -65,7 +65,7 @@ public class Owner {
     }
 
     public void addCar(Car car){
-        System.out.println("Adding car " + car.getBrand() + " " +  car.getModel() );
+        System.out.println("Adding car " + car.getBrand() + " " +  car.getModel() + " to user " + this.getName() );
         this.cars.add(car);
     }
 

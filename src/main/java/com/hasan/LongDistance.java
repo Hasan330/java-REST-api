@@ -25,7 +25,7 @@ public class LongDistance {
     private Calendar dateOfTrip;
 
     @ManyToOne
-    private FuelConsumption fuelConsumption;
+    private Refill refill;
 
     public LongDistance(String source, String destination, int distance, Calendar dateOfTrip) {
         this.source = source;
@@ -54,17 +54,22 @@ public class LongDistance {
         this.dateOfTrip = dateOfTrip;
     }
 
-    public FuelConsumption getFuelConsumption() {
-        return fuelConsumption;
+    public Refill getRefill() {
+        return refill;
     }
 
-    public void setFuelConsumption(FuelConsumption fuelConsumption) {
-        this.fuelConsumption = fuelConsumption;
-        this.fuelConsumption.addLongDistance(this);
-        FuelConsumption tempFuelConsumption = this.getFuelConsumption();
-        Car tempCar                         = tempFuelConsumption.getCar();
+    public int getDistance() {
+        return distance;
+    }
+
+    public void setRefill(Refill refill) {
+        this.refill = refill;
+        this.refill.addLongDistance(this);
+        Refill tempRefill = this.getRefill();
+        Car tempCar                         = tempRefill.getCar();
         Owner tempOwner                     = tempCar.getOwner();
 
-        System.out.println("\n"+tempOwner.getName()+ " Recorded long distance from " + this.getSource() + " to " + this.getDestination() + " for his car: " + tempCar.getBrand() + " " + tempCar.getModel() + " on " + this.getDateOfTrip().getTime() +"\n");
+        System.out.println("\n"+tempOwner.getName()+ " Recorded long distance from " + this.getSource() + " to " + this.getDestination() +" (" + this.getDistance() + " KM)" + " for his car: " + tempCar.getBrand() + " " + tempCar.getModel() + " on " + this.getDateOfTrip().getTime() +"\n");
+
     }
 }

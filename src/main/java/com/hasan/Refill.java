@@ -8,8 +8,8 @@ import java.util.Calendar;
 import java.util.List;
 
 @Entity
-@Table(name= "consumption")
-public class FuelConsumption {
+@Table(name= "refill")
+public class Refill {
 
     @Id
     @Column(name= "id")
@@ -26,14 +26,14 @@ public class FuelConsumption {
     private int        proposedDistance;
     private int        actualDistance;
 
-   @ManyToOne
-   private Car car;
+    @ManyToOne
+    private Car car;
 
-    @OneToMany(targetEntity = LongDistance.class, mappedBy = "fuelConsumption", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(targetEntity = LongDistance.class, mappedBy = "refill", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<LongDistance> longDistances = new ArrayList<>();
 
 
-    public FuelConsumption(Calendar refuelDate, Long initialMillage, int cost, double litresFilled, int proposedDistance, int actualDistance) {
+    public Refill(Calendar refuelDate, Long initialMillage, int cost, double litresFilled, int proposedDistance, int actualDistance) {
         this.refuelDate        = refuelDate;
         this.initialMillage    = initialMillage;
         this.cost              = cost;
