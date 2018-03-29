@@ -15,13 +15,17 @@ public class LongDistance {
     @GenericGenerator(name = "incrementator", strategy = "increment" )
     private int longDistance_id;
 
-    private String source;
-    private String destination;
-    private int distance;
+    @Column(name = "source")
+    private String   source;
+    @Column(name = "destination")
+    private String   destination;
+    @Column(name= "distance")
+    private int      distance;
+    @Column(name = "date")
     private Calendar dateOfTrip;
 
-    @Column(name = "REFILL_ID")
-    private int refillId;
+    @ManyToOne
+    private FuelConsumption fuelConsumption;
 
     public LongDistance(String source, String destination, int distance, Calendar dateOfTrip) {
         this.source = source;
@@ -48,5 +52,19 @@ public class LongDistance {
 
     public void setDateOfTrip(Calendar dateOfTrip) {
         this.dateOfTrip = dateOfTrip;
+    }
+
+    public FuelConsumption getFuelConsumption() {
+        return fuelConsumption;
+    }
+
+    public void setFuelConsumption(FuelConsumption fuelConsumption) {
+        this.fuelConsumption = fuelConsumption;
+        this.fuelConsumption.addLongDistance(this);
+        FuelConsumption tempFuelConsumption = this.getFuelConsumption();
+        Car tempCar                         = tempFuelConsumption.getCar();
+        Owner tempOwner                     = tempCar.getOwner();
+
+        System.out.println("\n"+tempOwner.getName()+ " Recorded long distance from " + this.getSource() + " to " + this.getDestination() + " for his car: " + tempCar.getBrand() + " " + tempCar.getModel() + " on " + this.getDateOfTrip());
     }
 }

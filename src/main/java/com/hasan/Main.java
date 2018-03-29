@@ -3,7 +3,6 @@ package com.hasan;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import java.util.Calendar;
 
 
 public class Main {
@@ -54,12 +53,10 @@ public class Main {
         fourthRefill.setCar(porsche);
 
         //Instantiate long distances
-        Calendar tubasRamallahDate1 = Calendar.getInstance();
-        tubasRamallahDate1.set(2018, Calendar.MARCH, 14);
-        LongDistance tubasRamallah1 = new LongDistance("Tubas", "Ramallah", 85, tubasRamallahDate1);
+        LongDistance tubasRamallah1 = new LongDistance("Tubas", "Ramallah", 85, Helpers.createDate(14,3,2018));
 
         //Assign longDistance to refill
-        initialRefill.addLongDistance(tubasRamallah1);
+        tubasRamallah1.setFuelConsumption(initialRefill);
 
 
         //            **** BUSINESS LOGIC: ****
