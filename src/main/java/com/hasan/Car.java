@@ -102,9 +102,9 @@ public class Car extends Vehicle{
         this.fuelConsumption = fuelConsumption;
     }
 
-    public void addFuelConsumption(FuelConsumption fuelConsumption) {
-        System.out.println("\n"+ this.getOwnerId() + " Added fuel consumption for car " + this.getBrand() + " " +  this.getModel());
-        System.out.println("Consumption Cost for " + this.getBrand() + " " + this.getModel() + " is: " + fuelConsumption.getCost() + " ILS");
+    public void addFuelRefill(FuelConsumption fuelConsumption) {
+        System.out.println("\n"+ this.getOwnerId() + " Added fuel refill for car " + this.getBrand() + " " +  this.getModel());
+        System.out.println("Refill Cost for " + this.getBrand() + " " + this.getModel() + " is: " + fuelConsumption.getCost() + " ILS");
         this.fuelConsumption.add(fuelConsumption);
         this.totalCost +=  fuelConsumption.getCost();
     }
