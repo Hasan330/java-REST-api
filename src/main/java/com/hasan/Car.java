@@ -30,6 +30,8 @@ public class Car extends Vehicle{
     @Column(name = "isManual")
     private boolean isManual;
 
+    private int totalCost;
+
 
     @Column(name = "CAR_OWNER_ID")
     private int ownerId;
@@ -101,8 +103,13 @@ public class Car extends Vehicle{
     }
 
     public void addFuelConsumption(FuelConsumption fuelConsumption) {
-        System.out.println(this.getOwnerId() + " Added fuel consumption for car " + this.getBrand() + " " +  this.getModel());
-        System.out.println("Consumption Cost: " + fuelConsumption.getCost() + " ILS");
+        System.out.println("\n"+ this.getOwnerId() + " Added fuel consumption for car " + this.getBrand() + " " +  this.getModel());
+        System.out.println("Consumption Cost for " + this.getBrand() + " " + this.getModel() + " is: " + fuelConsumption.getCost() + " ILS");
         this.fuelConsumption.add(fuelConsumption);
+        this.totalCost +=  fuelConsumption.getCost();
+    }
+
+    public void printTotalCost(){
+        System.out.println("\nTotal cost for "+ this.getBrand() + " " + this.getModel() + " is: " + this.totalCost);
     }
 }

@@ -13,6 +13,8 @@ public class Main {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         entityManager.getTransaction().begin();
 
+        System.out.println("\n\n\t\t\t\t\t\t **** Starting Run ****\n");
+
         Owner hasan   = new Owner("Hasan", 24);
         Owner sawsan  = new Owner("Sawsan", 22);
 
@@ -25,7 +27,7 @@ public class Main {
         hasan.addCar(seatIbiza);
         sawsan.addCar(porsche);
 
-        //Refills
+        //Instantiate Refills
         Calendar refill = Calendar.getInstance();
         refill.set(2018, Calendar.MARCH, 11);
         FuelConsumption initialRefill = new FuelConsumption(refill, 83500L, 240, 38, 480, 0);
@@ -45,13 +47,26 @@ public class Main {
         passat.addFuelConsumption(thirdRefill);
         porsche.addFuelConsumption(fourthRefill);
 
-        //Add long distances
+        //Instantiate long distances
         Calendar tubasRamallahDate1 = Calendar.getInstance();
         tubasRamallahDate1.set(2018, Calendar.MARCH, 14);
         LongDistance tubasRamallah1 = new LongDistance("Tubas", "Ramallah", 85, tubasRamallahDate1);
 
         //Assign longDistance to refill
         initialRefill.addLongDistance(tubasRamallah1);
+
+
+        //            **** BUSINESS LOGIC: ****
+
+        //Calculate total money paid on a certain car
+        seatIbiza.printTotalCost();
+        passat.printTotalCost();
+        porsche.printTotalCost();
+
+        //
+
+
+        //           **** DATABASE STUFF ****
 
         //Persist data
         entityManager.persist(sawsan);
@@ -68,6 +83,8 @@ public class Main {
         //Print cars
         hasan.printCars();
         sawsan.printCars();
+
+        System.out.println("\n\n\t\t\t\t\t\t **** Ending Run ****\n");
 
         //Commit to database
         entityManager.getTransaction().commit();
