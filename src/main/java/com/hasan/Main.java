@@ -34,7 +34,6 @@ public class Main {
         FuelConsumption fourthRefill  = new FuelConsumption(Helpers.createDate(4,4,2018), 5600L, 40, 7, 80, 100);
 
 
-
 //        Calendar refill = Calendar.getInstance();
 //        refill.set(2018, Calendar.MARCH, 11);
 //        FuelConsumption initialRefill = new FuelConsumption(refill, 83500L, 240, 38, 480, 0);
