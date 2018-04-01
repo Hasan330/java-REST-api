@@ -1,16 +1,28 @@
 package com.hasan;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
 
 public class Main {
     public static void main(String[] args){
-        //Entity Manager Factory
-        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("org.hibernate.tutorial.jpa");
-        EntityManager entityManager = entityManagerFactory.createEntityManager();
-        entityManager.getTransaction().begin();
+//        Entity Manager Factory
+//        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("org.hibernate.tutorial.jpa");
+//        EntityManager entityManager = entityManagerFactory.createEntityManager();
+//        entityManager.getTransaction().begin();
+
+        SessionFactory factory =
+                        new Configuration()
+                        .configure()
+                        .addAnnotatedClass(Owner.class)
+                        .addAnnotatedClass(Car.class)
+                        .addAnnotatedClass(Refill.class)
+                        .addAnnotatedClass(LongDistance.class)
+                        .buildSessionFactory();
+
+        Session session = factory.getCurrentSession();
+        session.beginTransaction();
+
 
         System.out.println("\n\n\t\t\t\t\t\t **** Starting Run ****\n");
 
@@ -32,19 +44,6 @@ public class Main {
         Refill thirdRefill   = new Refill(Helpers.createDate(2,4,2018), 2600L, 450, 60, 600, 510);
         Refill fourthRefill  = new Refill(Helpers.createDate(4,4,2018), 5600L, 300, 17, 80, 100);
 
-
-//        Calendar refill = Calendar.getInstance();
-//        refill.set(2018, Calendar.MARCH, 11);
-//        FuelConsumption initialRefill = new FuelConsumption(refill, 83500L, 240, 38, 480, 0);
-//        Calendar refill2 = Calendar.getInstance();
-//        refill2.set(2018, Calendar.MARCH, 23);
-//        FuelConsumption secondRefill = new FuelConsumption(refill2, 83600L, 250, 40, 500, 495);
-//        Calendar refill3 = Calendar.getInstance();
-//        refill3.set(2018, Calendar.MARCH, 25);
-//        FuelConsumption thirdRefill = new FuelConsumption(refill3, 2600L, 450, 60, 600, 510);
-//        Calendar refill4 = Calendar.getInstance();
-//        refill4.set(2018, Calendar.APRIL, 30);
-//        FuelConsumption fourthRefill = new FuelConsumption(refill4, 5600L, 40, 7, 80, 100);
 
         //Assign refills to cars
         initialRefill.setCar(seatIbiza);
@@ -82,26 +81,45 @@ public class Main {
 
         //           **** DATABASE STUFF ****
 
-        //Persist data
-        entityManager.persist(sawsan);
-        entityManager.persist(hasan);
-        entityManager.persist(initialRefill);
-        entityManager.persist(secondRefill);
-        entityManager.persist(thirdRefill);
-        entityManager.persist(fourthRefill);
-        entityManager.persist(tubasRamallah1);
-        entityManager.persist(seatIbiza);
-        entityManager.persist(passat);
-        entityManager.persist(porsche);
+//        Persist data
+//        entityManager.persist(sawsan);
+//        entityManager.persist(hasan);
+//        entityManager.persist(initialRefill);
+//        entityManager.persist(secondRefill);
+//        entityManager.persist(thirdRefill);
+//        entityManager.persist(fourthRefill);
+//        entityManager.persist(tubasRamallah1);
+//        entityManager.persist(seatIbiza);
+//        entityManager.persist(passat);
+//        entityManager.persist(porsche);
+
+        session.save(sawsan);
+        session.save(hasan);
+        session.save(initialRefill);
+        session.save(secondRefill);
+        session.save(thirdRefill);
+        session.save(fourthRefill);
+        session.save(tubasRamallah1);
+        session.save(seatIbiza);
+        session.save(passat);
+        session.save(porsche);
+
 
         //Print cars
         hasan.printCars();
         sawsan.printCars();
 
+
+
         System.out.println("\n\n\t\t\t\t\t\t **** Ending Run ****\n");
 
+
+
+     session.getTransaction().commit();
+     factory.close();
+
         //Commit to database
-        entityManager.getTransaction().commit();
-        entityManagerFactory.close();
+//        entityManager.getTransaction().commit();
+//        entityManagerFactory.close();
     }
 }
