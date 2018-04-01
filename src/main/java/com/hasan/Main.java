@@ -18,7 +18,6 @@ public class Main {
         Session session = factory.getCurrentSession();
         session.beginTransaction();
 
-
         System.out.println("\n\n\t\t\t\t\t\t **** Starting Run ****\n");
 
         Owner hasan   = new Owner("Hasan", 24);
@@ -38,7 +37,6 @@ public class Main {
         Refill secondRefill  = new Refill(Helpers.createDate(24,3,2018), 83600L, 100, 14, 200, 190);
         Refill thirdRefill   = new Refill(Helpers.createDate(2,4,2018), 2600L, 450, 60, 600, 510);
         Refill fourthRefill  = new Refill(Helpers.createDate(4,4,2018), 5600L, 300, 17, 80, 100);
-
 
         //Assign refills to cars
         initialRefill.setCar(seatIbiza);
@@ -88,12 +86,9 @@ public class Main {
         session.save(passat);
         session.save(porsche);
 
-
         //Print cars
         hasan.printCars();
         sawsan.printCars();
-
-
 
         System.out.println("\n\n\t\t\t\t\t\t **** Ending Run ****\n");
 
