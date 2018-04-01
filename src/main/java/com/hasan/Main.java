@@ -6,11 +6,6 @@ import org.hibernate.cfg.Configuration;
 
 public class Main {
     public static void main(String[] args){
-//        Entity Manager Factory
-//        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("org.hibernate.tutorial.jpa");
-//        EntityManager entityManager = entityManagerFactory.createEntityManager();
-//        entityManager.getTransaction().begin();
-
         SessionFactory factory =
                         new Configuration()
                         .configure()
@@ -82,17 +77,6 @@ public class Main {
         //           **** DATABASE STUFF ****
 
 //        Persist data
-//        entityManager.persist(sawsan);
-//        entityManager.persist(hasan);
-//        entityManager.persist(initialRefill);
-//        entityManager.persist(secondRefill);
-//        entityManager.persist(thirdRefill);
-//        entityManager.persist(fourthRefill);
-//        entityManager.persist(tubasRamallah1);
-//        entityManager.persist(seatIbiza);
-//        entityManager.persist(passat);
-//        entityManager.persist(porsche);
-
         session.save(sawsan);
         session.save(hasan);
         session.save(initialRefill);
@@ -113,13 +97,8 @@ public class Main {
 
         System.out.println("\n\n\t\t\t\t\t\t **** Ending Run ****\n");
 
-
-
-     session.getTransaction().commit();
-     factory.close();
-
         //Commit to database
-//        entityManager.getTransaction().commit();
-//        entityManagerFactory.close();
+        session.getTransaction().commit();
+        factory.close();
     }
 }
