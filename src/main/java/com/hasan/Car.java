@@ -35,7 +35,7 @@ public class Car extends Vehicle{
     @ManyToOne
     private Owner owner;
 
-    @OneToMany(mappedBy = "car", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "car", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Refill> refill = new ArrayList<>();
 
     public Car(){

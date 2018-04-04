@@ -4,6 +4,8 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
+import java.util.List;
+
 public class Main {
     public static void main(String[] args){
         SessionFactory factory =
@@ -14,9 +16,6 @@ public class Main {
                         .addAnnotatedClass(Refill.class)
                         .addAnnotatedClass(LongDistance.class)
                         .buildSessionFactory();
-
-        Session session = factory.getCurrentSession();
-        session.beginTransaction();
 
         System.out.println("\n\n\t\t\t\t\t\t **** Starting Run ****\n");
 
@@ -54,8 +53,6 @@ public class Main {
 
 
 
-
-
         //            **** BUSINESS LOGIC: ****
 
         //Calculate total money paid on a certain car
@@ -75,6 +72,9 @@ public class Main {
         //           **** DATABASE STUFF ****
 
 //        Persist data
+        Session session = factory.getCurrentSession();
+        session.beginTransaction();
+
         session.save(hasan);
         session.save(sawsan);
         session.save(initialRefill);
@@ -99,9 +99,22 @@ public class Main {
         LongDistance distanceResult = session.get(LongDistance.class, tubasRamallah1.getId());
         System.out.println("Long distance -->" + distanceResult);
 
-        //        Query query = session.createQuery("from Car");
-//        List<Car> cars = query.getResultList();
-//        cars.forEach(car -> System.out.println("hi " + car.getModel() +" " +car.getOwner()));
+
+        //Querying cars
+        List<Car> cars = session.createQuery("from Car c where"
+                + " c.brand='Porsche' OR c.model='Ibiza'").getResultList();
+        cars.forEach(car -> System.out.println("second time " + car.getModel() + " " + car.getId() +" --> " +car.getOwner()));
+
+
+        //Updating car
+        Car carToBeupdated = session.get(Car.class, 1);
+        carToBeupdated.setModel("Carera Turbo");
+
+
+        //Deleting a Car
+//        Car carToBeDeleted = session.get(Car.class, 7);
+//        session.delete(carToBeDeleted);
+
 
         System.out.println("\n\n\t\t\t\t\t\t **** Ending Run ****\n");
 

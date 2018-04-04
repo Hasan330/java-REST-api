@@ -29,7 +29,7 @@ public class Refill {
     @ManyToOne
     private Car car;
 
-    @OneToMany(targetEntity = LongDistance.class, mappedBy = "refill", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(targetEntity = LongDistance.class, mappedBy = "refill", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<LongDistance> longDistances = new ArrayList<>();
 
     public Refill(){
