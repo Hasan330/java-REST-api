@@ -27,9 +27,9 @@ public class Main {
         Car porsche   = new Car("Porsche", "911", "2.6 Turbo", 2015, "Black", 2, 6, 20000L, false);
 
         //Assign cars to users
-        passat.setOwner(hasan);
-        seatIbiza.setOwner(hasan);
-        porsche.setOwner(sawsan);
+        hasan.addCar(passat);
+        hasan.addCar(seatIbiza);
+        sawsan.addCar(porsche);
 
         //Instantiate Refills
         Refill initialRefill = new Refill(Helpers.createDate(11,3,2018), 83500L, 240, 38, 480, 0);

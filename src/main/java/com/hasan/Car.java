@@ -121,7 +121,7 @@ public class Car extends Vehicle{
 
     public void setOwner(Owner owner) {
         this.owner = owner;
-        this.owner.addCar(this);
+//        this.owner.addCar(this);
     }
 
     @Override
