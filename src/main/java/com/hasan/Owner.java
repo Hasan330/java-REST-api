@@ -25,6 +25,8 @@ public class Owner {
     @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Car> cars = new ArrayList<>();
 
+    public Owner() {
+    }
 
     public Owner(String name, int age) {
         this.name = name;
@@ -39,7 +41,7 @@ public class Owner {
         this.age = age;
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
@@ -87,5 +89,14 @@ public class Owner {
 
         //Print Outcome
         System.out.println("\nTotal money paid by " + this.getName() + " on all cars is: " + totalUserPayment + "\n");
+    }
+
+    @Override
+    public String toString() {
+        return "Owner{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                '}';
     }
 }

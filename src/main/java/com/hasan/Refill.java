@@ -32,6 +32,9 @@ public class Refill {
     @OneToMany(targetEntity = LongDistance.class, mappedBy = "refill", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<LongDistance> longDistances = new ArrayList<>();
 
+    public Refill(){
+
+    }
 
     public Refill(Calendar refuelDate, Long initialMillage, int cost, double litresFilled, int proposedDistance, int actualDistance) {
         this.refuelDate        = refuelDate;
@@ -98,4 +101,8 @@ public class Refill {
         this.car = car;
         this.car.addFuelRefill(this);
     }
+
+
+
+
 }

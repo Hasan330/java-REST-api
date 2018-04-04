@@ -75,8 +75,8 @@ public class Main {
         //           **** DATABASE STUFF ****
 
 //        Persist data
-        session.save(sawsan);
         session.save(hasan);
+        session.save(sawsan);
         session.save(initialRefill);
         session.save(secondRefill);
         session.save(thirdRefill);
@@ -86,9 +86,22 @@ public class Main {
         session.save(passat);
         session.save(porsche);
 
+
+
+
+
         //Print cars
         hasan.printCars();
         sawsan.printCars();
+
+        Owner savedOwner = session.get(Owner.class, hasan.getId());
+        System.out.println(savedOwner);
+        Car result = session.get(Car.class, seatIbiza.getId());
+        System.out.println("Ibiza car -->" + result);
+
+        //        Query query = session.createQuery("from Car");
+//        List<Car> cars = query.getResultList();
+//        cars.forEach(car -> System.out.println("hi " + car.getModel() +" " +car.getOwner()));
 
         System.out.println("\n\n\t\t\t\t\t\t **** Ending Run ****\n");
 

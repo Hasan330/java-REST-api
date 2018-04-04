@@ -27,6 +27,10 @@ public class LongDistance {
     @ManyToOne
     private Refill refill;
 
+    public LongDistance(){
+
+    }
+
     public LongDistance(String source, String destination, int distance, Calendar dateOfTrip) {
         this.source = source;
         this.destination = destination;
@@ -72,4 +76,6 @@ public class LongDistance {
         System.out.println("\n"+tempOwner.getName()+ " Recorded long distance from " + this.getSource() + " to " + this.getDestination() +" (" + this.getDistance() + " KM)" + " for his car: " + tempCar.getBrand() + " " + tempCar.getModel() + " on " + this.getDateOfTrip().getTime() +"\n");
 
     }
+
+
 }

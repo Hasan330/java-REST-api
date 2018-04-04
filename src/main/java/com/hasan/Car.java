@@ -38,6 +38,10 @@ public class Car extends Vehicle{
     @OneToMany(mappedBy = "car", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Refill> refill = new ArrayList<>();
 
+    public Car(){
+
+    }
+
     public Car(String brand, String model, String engine, int year, String color, int doors, int gears, long millage, boolean isManual) {
         super(year, engine, color);
         this.brand    = brand;
@@ -118,5 +122,20 @@ public class Car extends Vehicle{
     public void setOwner(Owner owner) {
         this.owner = owner;
         this.owner.addCar(this);
+    }
+
+    @Override
+    public String toString() {
+        return "Car{" +
+                "id=" + id +
+                ", brand='" + brand + '\'' +
+                ", model='" + model + '\'' +
+                ", doors=" + doors +
+                ", millage=" + millage +
+                ", gears=" + gears +
+                ", isManual=" + isManual +
+                ", totalCost=" + totalCost +
+                ", owner=" + owner.getName() +
+                '}';
     }
 }
