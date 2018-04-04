@@ -88,8 +88,6 @@ public class Main {
 
 
 
-
-
         //Print cars
         hasan.printCars();
         sawsan.printCars();
@@ -98,6 +96,8 @@ public class Main {
         System.out.println(savedOwner);
         Car result = session.get(Car.class, seatIbiza.getId());
         System.out.println("Ibiza car -->" + result);
+        LongDistance distanceResult = session.get(LongDistance.class, tubasRamallah1.getId());
+        System.out.println("Long distance -->" + distanceResult);
 
         //        Query query = session.createQuery("from Car");
 //        List<Car> cars = query.getResultList();

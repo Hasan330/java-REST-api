@@ -13,7 +13,7 @@ public class LongDistance {
     @Column(name= "id")
     @GeneratedValue(generator = "incrementator")
     @GenericGenerator(name = "incrementator", strategy = "increment" )
-    private int longDistance_id;
+    private int id;
 
     @Column(name = "source")
     private String   source;
@@ -38,8 +38,8 @@ public class LongDistance {
         this.dateOfTrip = dateOfTrip;
     }
 
-    public int getLongDistance_id() {
-        return longDistance_id;
+    public int getId() {
+        return id;
     }
 
     public String getSource() {
@@ -77,5 +77,15 @@ public class LongDistance {
 
     }
 
-
+    @Override
+    public String toString() {
+        return "LongDistance{" +
+                "id=" + id +
+                ", source='" + source + '\'' +
+                ", destination='" + destination + '\'' +
+                ", distance=" + distance +
+                ", dateOfTrip=" + dateOfTrip.getTime() +
+                ", refill=" + refill +
+                '}';
+    }
 }

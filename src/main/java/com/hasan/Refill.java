@@ -102,7 +102,17 @@ public class Refill {
         this.car.addFuelRefill(this);
     }
 
-
-
-
+    @Override
+    public String toString() {
+        return "Refill{" +
+                "id=" + id +
+                ", cost=" + cost +
+                ", refuelDate=" + refuelDate.getTime() +
+                ", initialMillage=" + initialMillage +
+                ", litresFilled=" + litresFilled +
+                ", proposedDistance=" + proposedDistance +
+                ", actualDistance=" + actualDistance +
+                ", car=" + car +
+                '}';
+    }
 }
