@@ -1,4 +1,4 @@
-package com.hasan;
+package com.hasan.models;
 
 import org.hibernate.annotations.GenericGenerator;
 

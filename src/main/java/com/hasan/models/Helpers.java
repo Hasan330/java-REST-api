@@ -1,4 +1,4 @@
-package com.hasan;
+package com.hasan.models;
 
 import java.util.Calendar;
 

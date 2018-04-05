@@ -1,4 +1,4 @@
-package com.hasan;
+package com.hasan.models;
 
 //Create vehicle as abstract class
 public abstract class Vehicle {
