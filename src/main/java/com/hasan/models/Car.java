@@ -1,5 +1,6 @@
 package com.hasan.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -33,6 +34,8 @@ public class Car extends Vehicle{
     private int totalCost;
 
     @ManyToOne
+    @JsonIgnore
+//    @JsonBackReference
     private Owner owner;
 
     @OneToMany(mappedBy = "car", cascade = CascadeType.ALL, fetch = FetchType.LAZY)

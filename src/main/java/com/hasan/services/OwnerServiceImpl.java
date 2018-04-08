@@ -28,7 +28,6 @@ public class OwnerServiceImpl implements OwnerService {
     }
 
     @Override
-    @Transactional
     public Owner getOwner(int theId) {
         return ownerRepository.getOwner(theId);
     }

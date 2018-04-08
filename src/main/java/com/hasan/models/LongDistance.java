@@ -1,5 +1,6 @@
 package com.hasan.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -25,6 +26,7 @@ public class LongDistance {
     private Calendar dateOfTrip;
 
     @ManyToOne
+    @JsonIgnore
     private Refill refill;
 
     public LongDistance(){

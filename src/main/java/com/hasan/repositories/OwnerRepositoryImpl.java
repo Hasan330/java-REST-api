@@ -54,7 +54,7 @@ public class OwnerRepositoryImpl implements OwnerRepository {
         currentSession.beginTransaction();
 
         Owner owner = currentSession.get(Owner.class, theId);
-
+        System.out.println("getOwner function --> owner details: " + owner );
 
         return owner;
     }

@@ -1,5 +1,6 @@
 package com.hasan.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -23,6 +24,8 @@ public class Owner {
     private  int age;
 
     @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonIgnore
+//    @JsonManagedReference
     private List<Car> cars = new ArrayList<>();
 
     public Owner() {

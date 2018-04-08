@@ -28,10 +28,10 @@ public class OwnerController {
 
 
     @GetMapping("/get")
-    public String getOwner(@RequestParam(value="id", defaultValue="2") int id){
+    public Owner getOwner(@RequestParam(value="id", defaultValue="2") int id){
         System.out.println("Hit the get in owner");
         Owner owner = ownerService.getOwner(id);
-        return owner.getName();
+        return owner;
     }
 
 

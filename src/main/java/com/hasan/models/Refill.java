@@ -1,5 +1,6 @@
 package com.hasan.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -27,9 +28,11 @@ public class Refill {
     private int        actualDistance;
 
     @ManyToOne
+    @JsonIgnore
     private Car car;
 
     @OneToMany(targetEntity = LongDistance.class, mappedBy = "refill", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonIgnore
     private List<LongDistance> longDistances = new ArrayList<>();
 
     public Refill(){
