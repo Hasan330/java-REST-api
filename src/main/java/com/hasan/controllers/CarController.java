@@ -9,6 +9,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class CarController {
 
+
+    @RequestMapping("/createCar")
+    public Car createCar(@RequestParam(value="model", defaultValue="testCar") String model){
+        Car seatIbiza = new Car("Seat", model, "1.2 TSI", 2014, "Black", 4, 5, 83500L, true);
+        Owner Rami = new Owner("Rami", 25);
+        return seatIbiza;
+    }
+
     @RequestMapping("/carName")
     public String returnCarName(@RequestParam(value="model", defaultValue="testCar") String model){
         Car seatIbiza = new Car("Seat", model, "1.2 TSI", 2014, "Black", 4, 5, 83500L, true);
@@ -16,4 +24,6 @@ public class CarController {
         seatIbiza.setOwner(Rami);
         return "Car Details: " + seatIbiza.toString();
     }
+
+
 }
