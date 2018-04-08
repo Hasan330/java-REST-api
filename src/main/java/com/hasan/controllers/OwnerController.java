@@ -26,9 +26,19 @@ public class OwnerController {
         return theOwner;
     }
 
-    @RequestMapping("/owner")
-    public String test(@RequestParam(value="name", defaultValue="testOwner") String name){
-        Owner user = new Owner(name, 22);
-        return "Owner 1 " + user.getName() + " " +  user.getAge();
+
+    @GetMapping("/get")
+    public String getOwner(@RequestParam(value="id", defaultValue="2") int id){
+        System.out.println("Hit the get in owner");
+        Owner owner = ownerService.getOwner(id);
+        return owner.getName();
     }
+
+
+
+//    @RequestMapping("/owner")
+//    public String test(@RequestParam(value="name", defaultValue="testOwner") String name){
+//        Owner user = new Owner(name, 22);
+//        return "Owner 1 " + user.getName() + " " +  user.getAge();
+//    }
 }
