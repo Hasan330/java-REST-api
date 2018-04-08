@@ -32,9 +32,11 @@ public class OwnerRepositoryImpl implements OwnerRepository {
     public List<Owner> getOwners() {
         // get the current hibernate session
         Session currentSession = sessionFactory.getCurrentSession();
+        currentSession.beginTransaction();
 
-        List<Owner> owners = currentSession.createQuery("from Owner order by name").getResultList();
-        owners.forEach(owner -> System.out.println("Owner details " + owner.getName()));
+//        List<Owner> owners = currentSession.createQuery("from Owner order by name").getResultList();
+        List<Owner> owners = currentSession.createQuery("from Owner").getResultList();
+        owners.forEach(owner -> System.out.println("Owner details " + owner.getName() + " " + owner.getId()));
 
         // return the results
         return owners;
@@ -47,7 +49,14 @@ public class OwnerRepositoryImpl implements OwnerRepository {
 
     @Override
     public Owner getOwner(int theId) {
-        return null;
+        // get the current hibernate session
+        Session currentSession = sessionFactory.getCurrentSession();
+        currentSession.beginTransaction();
+
+        Owner owner = currentSession.get(Owner.class, theId);
+
+
+        return owner;
     }
 
     @Override
