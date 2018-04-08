@@ -53,7 +53,6 @@ public class Main {
 
 
 
-
         //            **** BUSINESS LOGIC: ****
 
         //Calculate total money paid on a certain car
