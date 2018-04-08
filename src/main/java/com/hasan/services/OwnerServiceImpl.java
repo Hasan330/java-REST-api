@@ -1,17 +1,42 @@
 package com.hasan.services;
 
 import com.hasan.models.Owner;
+import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
-public interface OwnerServiceImpl {
+@Service
+public class OwnerServiceImpl implements OwnerService {
 
-    public List<Owner> getOwners();
 
-    public void saveOwner(Owner theOwner);
+    @Override
+    @Transactional
+    public List<Owner> getOwners() {
+//        return own.getCustomers();
+        return null;
+    }
 
-    public Owner getOwner(int theId);
+    @Override
+    @Transactional
+    public void saveOwner(Owner theOwner) {
 
-    public void deleteOwner(int theId);
+    }
+
+    @Override
+    @Transactional
+    public Owner getOwner(int theId) {
+        return null;
+    }
+
+    @Override
+    @Transactional
+    public void deleteOwner(int theId) {
+
+    }
+
+
+
+
 
 }
