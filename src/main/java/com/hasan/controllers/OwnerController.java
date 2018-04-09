@@ -19,7 +19,7 @@ public class OwnerController {
     private OwnerService ownerService;
 
 
-    @GetMapping("/list")
+    @GetMapping("")
     public List<Owner> listOwners(){
         // get owners from the service
         List<Owner> theOwner = ownerService.getOwners();
