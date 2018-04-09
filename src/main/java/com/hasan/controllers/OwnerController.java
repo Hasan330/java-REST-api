@@ -23,6 +23,13 @@ public class OwnerController {
         return owners;
     }
 
+    @PostMapping("")
+    public Owner saveOwner(@RequestBody Owner owner){
+        System.out.println("Saving owner with details ---> " + owner);
+        ownerService.saveOwner(owner);
+        return owner;
+    }
+
 
     @GetMapping("/get")
     public Owner getOwner(@RequestParam(value="id", defaultValue="2") int id){
@@ -31,10 +38,5 @@ public class OwnerController {
         return owner;
     }
 
-    @PostMapping("")
-    public Owner saveOwner(@RequestBody Owner owner){
-        System.out.println("Saving owner with details ---> " + owner);
-        ownerService.saveOwner(owner);
-        return owner;
-    }
+
 }

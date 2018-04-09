@@ -138,7 +138,7 @@ public class Car extends Vehicle{
                 ", gears=" + gears +
                 ", isManual=" + isManual +
                 ", totalCost=" + totalCost +
-                ", owner=" + owner.getName() +
+//                ", owner=" + owner.getName() +
                 '}';
     }
 }

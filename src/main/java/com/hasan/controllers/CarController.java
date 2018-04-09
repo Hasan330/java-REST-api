@@ -4,10 +4,7 @@ import com.hasan.models.Car;
 import com.hasan.models.Owner;
 import com.hasan.services.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -26,6 +23,16 @@ public class CarController {
         List<Car> cars = carService.getCars();
         return cars;
     }
+
+    @PostMapping("")
+    public Car saveCar(@RequestBody Car car){
+        System.out.println("Saving car with details ---> " + car);
+        carService.saveCar(car);
+        return car;
+    }
+
+
+
 
 
     @RequestMapping("/createCar")
