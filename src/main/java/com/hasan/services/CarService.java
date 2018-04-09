@@ -1,16 +1,37 @@
 package com.hasan.services;
 
 import com.hasan.models.Car;
+import com.hasan.repositories.CarRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
-public interface CarService {
+@Service
+public class CarService {
 
-    public List<Car> getCars();
+    @Autowired
+    private CarRepository carRepository;
 
-    public Car saveCar(Car car);
+//    @Override
+    @Transactional
+    public List<Car> getCars() {
+        return carRepository.getCars();
+    }
 
-    public Car getCar(int id);
+//    @Override
+    public Car saveCar(Car car) {
+        return carRepository.saveCar(car);
+    }
 
-    public void deleteCar(int id);
+//    @Override
+    public Car getCar(int id) {
+        return carRepository.getCar(id);
+    }
+
+//    @Override
+    public void deleteCar(int id) {
+
+    }
 }

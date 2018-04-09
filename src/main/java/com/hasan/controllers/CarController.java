@@ -2,7 +2,7 @@ package com.hasan.controllers;
 
 import com.hasan.models.Car;
 import com.hasan.models.Owner;
-import com.hasan.services.CarServiceImpl;
+import com.hasan.services.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,7 +14,7 @@ public class CarController {
 
     // need to inject our car service
     @Autowired
-    private CarServiceImpl carService;
+    private CarService carService;
 
 
     @GetMapping("")
