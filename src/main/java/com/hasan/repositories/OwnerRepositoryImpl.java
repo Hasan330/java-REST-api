@@ -71,8 +71,6 @@ public class OwnerRepositoryImpl implements OwnerRepository {
         currentSession.close();
 
         return owner;
-
-
     }
 
     @Override

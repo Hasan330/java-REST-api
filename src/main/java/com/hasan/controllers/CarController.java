@@ -31,6 +31,13 @@ public class CarController {
         return car;
     }
 
+    @GetMapping("/get")
+    public Car getCar(@RequestParam(value="id") int id){
+        System.out.println("Hit the get in Car");
+        Car car = carService.getCar(id);
+        return car;
+    }
+
 
 
 

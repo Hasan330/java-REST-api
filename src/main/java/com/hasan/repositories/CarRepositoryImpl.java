@@ -61,7 +61,17 @@ public class CarRepositoryImpl implements CarRepository {
 
     @Override
     public Car getCar(int id) {
-        return null;
+        // get the current hibernate session
+        Session currentSession = sessionFactory.getCurrentSession();
+        Transaction tx = currentSession.beginTransaction();
+
+        Car car = currentSession.get(Car.class, id);
+        System.out.println("getOwner function --> owner details: " + car );
+
+        tx.commit();
+        currentSession.close();
+
+        return car;
     }
 
     @Override

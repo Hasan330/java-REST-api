@@ -14,4 +14,6 @@ public interface OwnerService {
 
     public void deleteOwner(int theId);
 
+    public Owner addCar(int ownerId, int carId);
+
 }

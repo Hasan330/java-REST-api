@@ -1,6 +1,7 @@
 package com.hasan.controllers;
 
 import com.hasan.models.Owner;
+import com.hasan.services.CarService;
 import com.hasan.services.OwnerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +15,9 @@ public class OwnerController {
     // need to inject our owner service
     @Autowired
     private OwnerService ownerService;
+
+    @Autowired
+    private CarService carService;
 
 
     @GetMapping("")
@@ -48,5 +52,15 @@ public class OwnerController {
         return owner;
     }
 
+
+
+
+
+    @PostMapping("{ownerId}/addCar")
+    public Owner addCar(@RequestParam(value = "carId") int carId, @PathVariable int ownerId){
+        Owner owner = ownerService.addCar(ownerId, carId);
+
+        return owner;
+    }
 
 }
