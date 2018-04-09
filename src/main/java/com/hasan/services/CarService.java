@@ -1,16 +1,54 @@
 package com.hasan.services;
 
 import com.hasan.models.Car;
+import com.hasan.models.Refill;
+import com.hasan.repositories.CarRepository;
+import com.hasan.repositories.RefillRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
-public interface CarService {
+@Service
+public class CarService {
 
-    public List<Car> getCars();
+    @Autowired
+    private CarRepository carRepository;
 
-    public Car saveCar(Car car);
+    @Autowired
+    private RefillRepository refillRepository;
 
-    public Car getCar(int id);
+//    @Override
+    @Transactional
+    public List<Car> getCars() {
+        return carRepository.getCars();
+    }
 
-    public void deleteCar(int id);
+//    @Override
+    public Car saveCar(Car car) {
+        return carRepository.saveCar(car);
+    }
+
+//    @Override
+    public Car getCar(int id) {
+        return carRepository.getCar(id);
+    }
+
+//    @Override
+    public void deleteCar(int id) {
+
+    }
+
+    @Transactional
+    public Car addRefill(int carId, int refillId){
+
+        Refill refill = refillRepository.getRefill(refillId);
+        Car car = carRepository.getCar(carId);
+        car.addFuelRefill(refill);
+
+        System.out.println("Adding refill " + refill + " to car " + car);
+
+        return carRepository.updateCar(car);
+    }
 }

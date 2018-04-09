@@ -23,8 +23,6 @@ public class Owner {
     private  int age;
 
     @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-//    @JsonIgnore
-//    @JsonManagedReference
     private List<Car> cars = new ArrayList<>();
 
     public Owner() {

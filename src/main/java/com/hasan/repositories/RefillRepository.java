@@ -13,11 +13,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public class CarRepositoryImpl implements CarRepository {
-
-    // need to inject the session factory
-//    @Autowired
-//    private SessionFactory sessionFactory;
+public class RefillRepository {
 
     //TODO: Make this autowired
     SessionFactory sessionFactory =
@@ -30,52 +26,46 @@ public class CarRepositoryImpl implements CarRepository {
                     .buildSessionFactory();
 
 
-    @Override
-    public List<Car> getCars() {
+
+    public List<Refill> getRefills(){
         // get the current hibernate session
         Session currentSession = sessionFactory.getCurrentSession();
         Transaction tx = currentSession.beginTransaction();
 
-        List<Car> cars = currentSession.createQuery("from Car").getResultList();
-        cars.forEach(car -> System.out.println("Car details " + car.getModel() + " " + car.getId()));
+        List<Refill> refills = currentSession.createQuery("from Refill").getResultList();
+        refills.forEach(refill -> System.out.println("Refill details " + refill.getCost() + " " + refill.getId()));
 
         tx.commit();
         currentSession.close();
 
         // return the results
-        return cars;
+        return refills;
     }
 
-    @Override
-    public Car saveCar(Car car) {
+    public Refill saveRefill(Refill refill) {
         // get the current hibernate session
         Session currentSession = sessionFactory.getCurrentSession();
         Transaction tx = currentSession.beginTransaction();
 
-        currentSession.save(car);
+        currentSession.save(refill);
         currentSession.getTransaction().commit();
         currentSession.close();
 
-        return car;
+        return refill;
     }
 
-    @Override
-    public Car getCar(int id) {
+//    @Override
+    public Refill getRefill(int id) {
         // get the current hibernate session
         Session currentSession = sessionFactory.getCurrentSession();
         Transaction tx = currentSession.beginTransaction();
 
-        Car car = currentSession.get(Car.class, id);
-        System.out.println("getOwner function --> owner details: " + car );
+        Refill refill = currentSession.get(Refill.class, id);
+        System.out.println("getOwner function --> refill details: " + refill );
 
         tx.commit();
         currentSession.close();
 
-        return car;
-    }
-
-    @Override
-    public void deleteCar(int id) {
-
+        return refill;
     }
 }

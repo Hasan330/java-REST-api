@@ -9,7 +9,7 @@ import java.util.Calendar;
 import java.util.List;
 
 @Entity
-@Table(name= "refill")
+@Table(name= "refills")
 public class Refill {
 
     @Id
@@ -102,7 +102,7 @@ public class Refill {
 
     public void setCar(Car car) {
         this.car = car;
-        this.car.addFuelRefill(this);
+//        this.car.addFuelRefill(this);
     }
 
     @Override
