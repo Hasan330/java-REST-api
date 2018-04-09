@@ -9,7 +9,7 @@ import java.util.Calendar;
 import java.util.List;
 
 @Entity
-@Table(name= "refill")
+@Table(name= "refills")
 public class Refill {
 
     @Id
