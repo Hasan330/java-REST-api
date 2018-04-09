@@ -38,7 +38,7 @@ public class Car extends Vehicle{
 //    @JsonBackReference
     private Owner owner;
 
-    @OneToMany(mappedBy = "car", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "car", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Refill> refill = new ArrayList<>();
 
     public Car(){

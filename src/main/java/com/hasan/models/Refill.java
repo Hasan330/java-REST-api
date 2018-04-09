@@ -31,8 +31,8 @@ public class Refill {
     @JsonIgnore
     private Car car;
 
-    @OneToMany(targetEntity = LongDistance.class, mappedBy = "refill", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonIgnore
+    @OneToMany(targetEntity = LongDistance.class, mappedBy = "refill", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+//    @JsonIgnore
     private List<LongDistance> longDistances = new ArrayList<>();
 
     public Refill(){

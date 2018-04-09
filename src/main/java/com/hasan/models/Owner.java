@@ -22,7 +22,7 @@ public class Owner {
     @Column(name = "age")
     private  int age;
 
-    @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 //    @JsonIgnore
 //    @JsonManagedReference
     private List<Car> cars = new ArrayList<>();

@@ -6,6 +6,7 @@ import com.hasan.models.Owner;
 import com.hasan.models.Refill;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.springframework.stereotype.Repository;
 
@@ -32,11 +33,14 @@ public class OwnerRepositoryImpl implements OwnerRepository {
     public List<Owner> getOwners() {
         // get the current hibernate session
         Session currentSession = sessionFactory.getCurrentSession();
-        currentSession.beginTransaction();
+        Transaction tx = currentSession.beginTransaction();
 
 //        List<Owner> owners = currentSession.createQuery("from Owner order by name").getResultList();
         List<Owner> owners = currentSession.createQuery("from Owner").getResultList();
         owners.forEach(owner -> System.out.println("Owner details " + owner.getName() + " " + owner.getId()));
+
+        tx.commit();
+        currentSession.close();
 
         // return the results
         return owners;
@@ -51,12 +55,17 @@ public class OwnerRepositoryImpl implements OwnerRepository {
     public Owner getOwner(int theId) {
         // get the current hibernate session
         Session currentSession = sessionFactory.getCurrentSession();
-        currentSession.beginTransaction();
+        Transaction tx = currentSession.beginTransaction();
 
         Owner owner = currentSession.get(Owner.class, theId);
         System.out.println("getOwner function --> owner details: " + owner );
 
+        tx.commit();
+        currentSession.close();
+
         return owner;
+
+
     }
 
     @Override
