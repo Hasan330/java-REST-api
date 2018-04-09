@@ -13,7 +13,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public class CarRepository implements CarRepositoryInterface {
+public class CarRepository {
 
     // need to inject the session factory
 //    @Autowired
@@ -30,7 +30,7 @@ public class CarRepository implements CarRepositoryInterface {
                     .buildSessionFactory();
 
 
-    @Override
+//    @Override
     public List<Car> getCars() {
         // get the current hibernate session
         Session currentSession = sessionFactory.getCurrentSession();
@@ -46,7 +46,7 @@ public class CarRepository implements CarRepositoryInterface {
         return cars;
     }
 
-    @Override
+//    @Override
     public Car saveCar(Car car) {
         // get the current hibernate session
         Session currentSession = sessionFactory.getCurrentSession();
@@ -59,7 +59,7 @@ public class CarRepository implements CarRepositoryInterface {
         return car;
     }
 
-    @Override
+//    @Override
     public Car getCar(int id) {
         // get the current hibernate session
         Session currentSession = sessionFactory.getCurrentSession();
@@ -74,7 +74,7 @@ public class CarRepository implements CarRepositoryInterface {
         return car;
     }
 
-    @Override
+//    @Override
     public void deleteCar(int id) {
 
     }
