@@ -1,16 +1,22 @@
 package com.hasan;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
+import com.hasan.models.*;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
 
+import java.util.List;
 
 public class Main {
     public static void main(String[] args){
-        //Entity Manager Factory
-        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("org.hibernate.tutorial.jpa");
-        EntityManager entityManager = entityManagerFactory.createEntityManager();
-        entityManager.getTransaction().begin();
+        SessionFactory factory =
+                        new Configuration()
+                        .configure()
+                        .addAnnotatedClass(Owner.class)
+                        .addAnnotatedClass(Car.class)
+                        .addAnnotatedClass(Refill.class)
+                        .addAnnotatedClass(LongDistance.class)
+                        .buildSessionFactory();
 
         System.out.println("\n\n\t\t\t\t\t\t **** Starting Run ****\n");
 
@@ -22,29 +28,15 @@ public class Main {
         Car porsche   = new Car("Porsche", "911", "2.6 Turbo", 2015, "Black", 2, 6, 20000L, false);
 
         //Assign cars to users
-        porsche.setOwner(sawsan);
-        passat.setOwner(hasan);
-        seatIbiza.setOwner(hasan);
+        hasan.addCar(passat);
+        hasan.addCar(seatIbiza);
+        sawsan.addCar(porsche);
 
         //Instantiate Refills
-        FuelConsumption initialRefill = new FuelConsumption(Helpers.createDate(11,3,2018), 83500L, 240, 38, 480, 0);
-        FuelConsumption secondRefill  = new FuelConsumption(Helpers.createDate(24,3,2018), 83600L, 250, 40, 500, 495);
-        FuelConsumption thirdRefill   = new FuelConsumption(Helpers.createDate(2,4,2018), 2600L, 450, 60, 600, 510);
-        FuelConsumption fourthRefill  = new FuelConsumption(Helpers.createDate(4,4,2018), 5600L, 40, 7, 80, 100);
-
-
-//        Calendar refill = Calendar.getInstance();
-//        refill.set(2018, Calendar.MARCH, 11);
-//        FuelConsumption initialRefill = new FuelConsumption(refill, 83500L, 240, 38, 480, 0);
-//        Calendar refill2 = Calendar.getInstance();
-//        refill2.set(2018, Calendar.MARCH, 23);
-//        FuelConsumption secondRefill = new FuelConsumption(refill2, 83600L, 250, 40, 500, 495);
-//        Calendar refill3 = Calendar.getInstance();
-//        refill3.set(2018, Calendar.MARCH, 25);
-//        FuelConsumption thirdRefill = new FuelConsumption(refill3, 2600L, 450, 60, 600, 510);
-//        Calendar refill4 = Calendar.getInstance();
-//        refill4.set(2018, Calendar.APRIL, 30);
-//        FuelConsumption fourthRefill = new FuelConsumption(refill4, 5600L, 40, 7, 80, 100);
+        Refill initialRefill = new Refill(Helpers.createDate(11,3,2018), 83500L, 240, 38, 480, 0);
+        Refill secondRefill  = new Refill(Helpers.createDate(24,3,2018), 83600L, 100, 14, 200, 190);
+        Refill thirdRefill   = new Refill(Helpers.createDate(2,4,2018), 2600L, 450, 60, 600, 510);
+        Refill fourthRefill  = new Refill(Helpers.createDate(4,4,2018), 5600L, 300, 17, 80, 100);
 
         //Assign refills to cars
         initialRefill.setCar(seatIbiza);
@@ -56,10 +48,7 @@ public class Main {
         LongDistance tubasRamallah1 = new LongDistance("Tubas", "Ramallah", 85, Helpers.createDate(14,3,2018));
 
         //Assign longDistance to refill
-        tubasRamallah1.setFuelConsumption(initialRefill);
-
-
-
+        tubasRamallah1.setRefill(initialRefill);
 
 
 
@@ -82,26 +71,55 @@ public class Main {
 
         //           **** DATABASE STUFF ****
 
-        //Persist data
-        entityManager.persist(sawsan);
-        entityManager.persist(hasan);
-        entityManager.persist(initialRefill);
-        entityManager.persist(secondRefill);
-        entityManager.persist(thirdRefill);
-        entityManager.persist(fourthRefill);
-        entityManager.persist(tubasRamallah1);
-        entityManager.persist(seatIbiza);
-        entityManager.persist(passat);
-        entityManager.persist(porsche);
+//        Persist data
+        Session session = factory.getCurrentSession();
+        session.beginTransaction();
+
+        session.save(hasan);
+        session.save(sawsan);
+        session.save(initialRefill);
+        session.save(secondRefill);
+        session.save(thirdRefill);
+        session.save(fourthRefill);
+        session.save(tubasRamallah1);
+        session.save(seatIbiza);
+        session.save(passat);
+        session.save(porsche);
+
+
 
         //Print cars
         hasan.printCars();
         sawsan.printCars();
 
+        Owner savedOwner = session.get(Owner.class, hasan.getId());
+        System.out.println(savedOwner);
+        Car result = session.get(Car.class, seatIbiza.getId());
+        System.out.println("Ibiza car -->" + result);
+        LongDistance distanceResult = session.get(LongDistance.class, tubasRamallah1.getId());
+        System.out.println("Long distance -->" + distanceResult);
+
+
+        //Querying cars
+        List<Car> cars = session.createQuery("from Car c where"
+                + " c.brand='Porsche' OR c.model='Ibiza'").getResultList();
+        cars.forEach(car -> System.out.println("second time " + car.getModel() + " " + car.getId() +" --> " +car.getOwner()));
+
+
+        //Updating car
+        Car carToBeupdated = session.get(Car.class, 1);
+        carToBeupdated.setModel("Carera Turbo");
+
+
+        //Deleting a Car
+//        Car carToBeDeleted = session.get(Car.class, 7);
+//        session.delete(carToBeDeleted);
+
+
         System.out.println("\n\n\t\t\t\t\t\t **** Ending Run ****\n");
 
         //Commit to database
-        entityManager.getTransaction().commit();
-        entityManagerFactory.close();
+        session.getTransaction().commit();
+        factory.close();
     }
 }

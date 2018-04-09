@@ -1,0 +1,1 @@
+Service are used for the business logic side, they access the Repositories DAO
