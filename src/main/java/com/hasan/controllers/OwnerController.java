@@ -1,8 +1,8 @@
 package com.hasan.controllers;
 
 import com.hasan.models.Owner;
-import com.hasan.services.CarService;
-import com.hasan.services.OwnerService;
+import com.hasan.services.CarServiceImpl;
+import com.hasan.services.OwnerServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,10 +14,10 @@ public class OwnerController {
 
     // need to inject our owner service
     @Autowired
-    private OwnerService ownerService;
+    private OwnerServiceImpl ownerService;
 
     @Autowired
-    private CarService carService;
+    private CarServiceImpl carService;
 
 
     @GetMapping("")

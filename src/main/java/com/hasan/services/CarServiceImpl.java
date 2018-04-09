@@ -1,7 +1,7 @@
 package com.hasan.services;
 
 import com.hasan.models.Car;
-import com.hasan.repositories.CarRepository;
+import com.hasan.repositories.CarRepositoryImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,28 +9,28 @@ import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
-public class CarServiceImpl implements CarService {
+public class CarServiceImpl {
 
     @Autowired
-    private CarRepository carRepository;
+    private CarRepositoryImpl carRepository;
 
-    @Override
+//    @Override
     @Transactional
     public List<Car> getCars() {
         return carRepository.getCars();
     }
 
-    @Override
+//    @Override
     public Car saveCar(Car car) {
         return carRepository.saveCar(car);
     }
 
-    @Override
+//    @Override
     public Car getCar(int id) {
         return carRepository.getCar(id);
     }
 
-    @Override
+//    @Override
     public void deleteCar(int id) {
 
     }

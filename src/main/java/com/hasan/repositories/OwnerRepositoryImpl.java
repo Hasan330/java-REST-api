@@ -13,7 +13,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public class OwnerRepositoryImpl implements OwnerRepository {
+public class OwnerRepositoryImpl {
 
     // need to inject the session factory
 //    @Autowired
@@ -29,7 +29,7 @@ public class OwnerRepositoryImpl implements OwnerRepository {
                     .addAnnotatedClass(LongDistance.class)
                     .buildSessionFactory();
 
-    @Override
+//    @Override
     public List<Owner> getOwners() {
         // get the current hibernate session
         Session currentSession = sessionFactory.getCurrentSession();
@@ -45,7 +45,7 @@ public class OwnerRepositoryImpl implements OwnerRepository {
         return owners;
     }
 
-    @Override
+//    @Override
     public Owner saveOwner(Owner theOwner) {
         // get the current hibernate session
         Session currentSession = sessionFactory.getCurrentSession();
@@ -58,7 +58,7 @@ public class OwnerRepositoryImpl implements OwnerRepository {
         return theOwner;
     }
 
-    @Override
+//    @Override
     public Owner getOwner(int theId) {
         // get the current hibernate session
         Session currentSession = sessionFactory.getCurrentSession();
@@ -90,7 +90,7 @@ public class OwnerRepositoryImpl implements OwnerRepository {
         return owner;
     }
 
-    @Override
+//    @Override
     public void deleteOwner(int theId) {
 
     }
