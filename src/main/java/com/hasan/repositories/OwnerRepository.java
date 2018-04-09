@@ -13,4 +13,6 @@ public interface OwnerRepository {
 
     public void deleteOwner(int theId);
 
+    public Owner updateOwner(Owner owner);
+
 }

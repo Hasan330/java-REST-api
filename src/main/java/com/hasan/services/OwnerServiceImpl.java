@@ -43,7 +43,7 @@ public class OwnerServiceImpl implements OwnerService {
         owner.addCar(car);
 
 
-        return ownerRepository.saveOwner(owner);
+        return ownerRepository.updateOwner(owner);
     }
 
 

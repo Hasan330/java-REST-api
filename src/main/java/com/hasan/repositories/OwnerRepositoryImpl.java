@@ -73,6 +73,23 @@ public class OwnerRepositoryImpl implements OwnerRepository {
         return owner;
     }
 
+    public Owner updateOwner(Owner owner){
+
+        // get the current hibernate session
+        Session currentSession = sessionFactory.getCurrentSession();
+        Transaction tx = currentSession.beginTransaction();
+
+        currentSession.update(owner);
+
+        currentSession.getTransaction().commit();
+        currentSession.close();
+
+
+
+
+        return owner;
+    }
+
     @Override
     public void deleteOwner(int theId) {
 
