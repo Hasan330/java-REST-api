@@ -78,4 +78,19 @@ public class CarRepository implements CarRepositoryInterface {
     public void deleteCar(int id) {
 
     }
+
+
+    public Car updateCar(Car car){
+
+        // get the current hibernate session
+        Session currentSession = sessionFactory.getCurrentSession();
+        Transaction tx = currentSession.beginTransaction();
+
+        currentSession.update(car);
+
+        currentSession.getTransaction().commit();
+        currentSession.close();
+
+        return car;
+    }
 }

@@ -102,7 +102,7 @@ public class Refill {
 
     public void setCar(Car car) {
         this.car = car;
-        this.car.addFuelRefill(this);
+//        this.car.addFuelRefill(this);
     }
 
     @Override

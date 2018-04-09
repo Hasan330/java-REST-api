@@ -17,9 +17,11 @@ public class RefillService {
     @Transactional
     public List<Refill> getRefills(){ return refillRepository.getRefills(); }
 
+    @Transactional
     public Refill saveRefill(Refill refill){ return refillRepository.saveRefill(refill); }
 
-
-
-
+    @Transactional
+    public Refill getRefill(int id) {
+        return refillRepository.getRefill(id);
+    }
 }

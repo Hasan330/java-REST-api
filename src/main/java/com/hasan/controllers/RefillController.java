@@ -23,4 +23,11 @@ public class RefillController {
 
     @PostMapping("")
     public Refill saveRefill(@RequestBody Refill refill){ return refillService.saveRefill(refill); }
+
+    @GetMapping("/get")
+    public Refill getRefill(@RequestParam(value="id") int id){
+        System.out.println("Hit the get in refill");
+        Refill refill = refillService.getRefill(id);
+        return refill;
+    }
 }

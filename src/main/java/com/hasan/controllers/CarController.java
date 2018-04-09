@@ -1,7 +1,6 @@
 package com.hasan.controllers;
 
 import com.hasan.models.Car;
-import com.hasan.models.Owner;
 import com.hasan.services.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -38,24 +37,11 @@ public class CarController {
         return car;
     }
 
+    @PostMapping("{carId}/addRefill")
+    public Car addRefill(@RequestParam(value = "refillId") int refillId, @PathVariable int carId){
+        Car car = carService.addRefill(carId, refillId);
 
-
-
-
-    @RequestMapping("/createCar")
-    public Car createCar(@RequestParam(value="model", defaultValue="testCar") String model){
-        Car seatIbiza = new Car("Seat", model, "1.2 TSI", 2014, "Black", 4, 5, 83500L, true);
-        Owner Rami = new Owner("Rami", 25);
-        return seatIbiza;
+        return car;
     }
-
-    @RequestMapping("/carName")
-    public String returnCarName(@RequestParam(value="model", defaultValue="testCar") String model){
-        Car seatIbiza = new Car("Seat", model, "1.2 TSI", 2014, "Black", 4, 5, 83500L, true);
-        Owner Rami = new Owner("Rami", 25);
-        seatIbiza.setOwner(Rami);
-        return "Car Details: " + seatIbiza.toString();
-    }
-
 
 }

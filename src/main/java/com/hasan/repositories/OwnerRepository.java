@@ -84,9 +84,6 @@ public class OwnerRepository {
         currentSession.getTransaction().commit();
         currentSession.close();
 
-
-
-
         return owner;
     }
 

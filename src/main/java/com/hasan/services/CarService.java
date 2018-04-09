@@ -1,7 +1,9 @@
 package com.hasan.services;
 
 import com.hasan.models.Car;
+import com.hasan.models.Refill;
 import com.hasan.repositories.CarRepository;
+import com.hasan.repositories.RefillRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +15,9 @@ public class CarService {
 
     @Autowired
     private CarRepository carRepository;
+
+    @Autowired
+    private RefillRepository refillRepository;
 
 //    @Override
     @Transactional
@@ -33,5 +38,17 @@ public class CarService {
 //    @Override
     public void deleteCar(int id) {
 
+    }
+
+    @Transactional
+    public Car addRefill(int carId, int refillId){
+
+        Refill refill = refillRepository.getRefill(refillId);
+        Car car = carRepository.getCar(carId);
+        car.addFuelRefill(refill);
+
+        System.out.println("Adding refill " + refill + " to car " + car);
+
+        return carRepository.updateCar(car);
     }
 }

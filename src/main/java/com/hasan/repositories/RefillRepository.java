@@ -53,4 +53,19 @@ public class RefillRepository {
 
         return refill;
     }
+
+//    @Override
+    public Refill getRefill(int id) {
+        // get the current hibernate session
+        Session currentSession = sessionFactory.getCurrentSession();
+        Transaction tx = currentSession.beginTransaction();
+
+        Refill refill = currentSession.get(Refill.class, id);
+        System.out.println("getOwner function --> refill details: " + refill );
+
+        tx.commit();
+        currentSession.close();
+
+        return refill;
+    }
 }
