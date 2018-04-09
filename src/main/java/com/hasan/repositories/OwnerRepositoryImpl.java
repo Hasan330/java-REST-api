@@ -47,8 +47,16 @@ public class OwnerRepositoryImpl implements OwnerRepository {
     }
 
     @Override
-    public void saveOwner(Owner theOwner) {
+    public Owner saveOwner(Owner theOwner) {
+        // get the current hibernate session
+        Session currentSession = sessionFactory.getCurrentSession();
+        Transaction tx = currentSession.beginTransaction();
 
+        currentSession.save(theOwner);
+        currentSession.getTransaction().commit();
+        currentSession.close();
+
+        return theOwner;
     }
 
     @Override

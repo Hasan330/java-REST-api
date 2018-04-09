@@ -3,15 +3,12 @@ package com.hasan.controllers;
 import com.hasan.models.Owner;
 import com.hasan.services.OwnerService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/owner")
+@RequestMapping("/owners")
 public class OwnerController {
 
     // need to inject our customer service
@@ -22,8 +19,8 @@ public class OwnerController {
     @GetMapping("")
     public List<Owner> listOwners(){
         // get owners from the service
-        List<Owner> theOwner = ownerService.getOwners();
-        return theOwner;
+        List<Owner> owners = ownerService.getOwners();
+        return owners;
     }
 
 
@@ -34,11 +31,10 @@ public class OwnerController {
         return owner;
     }
 
-
-
-//    @RequestMapping("/owner")
-//    public String test(@RequestParam(value="name", defaultValue="testOwner") String name){
-//        Owner user = new Owner(name, 22);
-//        return "Owner 1 " + user.getName() + " " +  user.getAge();
-//    }
+    @PostMapping("")
+    public Owner saveOwner(@RequestBody Owner owner){
+        System.out.println("Saving owner with details ---> " + owner);
+        ownerService.saveOwner(owner);
+        return owner;
+    }
 }

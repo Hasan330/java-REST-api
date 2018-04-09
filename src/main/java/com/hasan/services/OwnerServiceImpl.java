@@ -23,7 +23,8 @@ public class OwnerServiceImpl implements OwnerService {
 
     @Override
     @Transactional
-    public void saveOwner(Owner theOwner) {
+    public Owner saveOwner(Owner theOwner) {
+        return ownerRepository.saveOwner(theOwner);
 
     }
 

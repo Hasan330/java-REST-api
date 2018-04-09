@@ -7,7 +7,7 @@ import java.util.List;
 public interface OwnerRepository {
     public List<Owner> getOwners();
 
-    public void saveOwner(Owner theOwner);
+    public Owner saveOwner(Owner theOwner);
 
     public Owner getOwner(int theId);
 
