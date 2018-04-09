@@ -2,12 +2,30 @@ package com.hasan.controllers;
 
 import com.hasan.models.Car;
 import com.hasan.models.Owner;
+import com.hasan.services.CarService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
+@RequestMapping("/cars")
 public class CarController {
+
+    // need to inject our car service
+    @Autowired
+    private CarService carService;
+
+
+    @GetMapping("")
+    public List<Car> listCars(){
+        // get owners from the service
+        List<Car> cars = carService.getCars();
+        return cars;
+    }
 
 
     @RequestMapping("/createCar")

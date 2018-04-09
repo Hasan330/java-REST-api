@@ -13,7 +13,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public class OwnerRepositoryImpl implements OwnerRepository {
+public class CarRepositoryImpl implements CarRepository {
 
     // need to inject the session factory
 //    @Autowired
@@ -29,54 +29,35 @@ public class OwnerRepositoryImpl implements OwnerRepository {
                     .addAnnotatedClass(LongDistance.class)
                     .buildSessionFactory();
 
+
     @Override
-    public List<Owner> getOwners() {
+    public List<Car> getCars() {
         // get the current hibernate session
         Session currentSession = sessionFactory.getCurrentSession();
         Transaction tx = currentSession.beginTransaction();
 
-        List<Owner> owners = currentSession.createQuery("from Owner").getResultList();
-        owners.forEach(owner -> System.out.println("Owner details " + owner.getName() + " " + owner.getId()));
+        List<Car> cars = currentSession.createQuery("from Car").getResultList();
+        cars.forEach(car -> System.out.println("Car details " + car.getModel() + " " + car.getId()));
 
         tx.commit();
         currentSession.close();
 
         // return the results
-        return owners;
+        return cars;
     }
 
     @Override
-    public Owner saveOwner(Owner theOwner) {
-        // get the current hibernate session
-        Session currentSession = sessionFactory.getCurrentSession();
-        Transaction tx = currentSession.beginTransaction();
-
-        currentSession.save(theOwner);
-        currentSession.getTransaction().commit();
-        currentSession.close();
-
-        return theOwner;
+    public Car saveCar(Car car) {
+        return null;
     }
 
     @Override
-    public Owner getOwner(int theId) {
-        // get the current hibernate session
-        Session currentSession = sessionFactory.getCurrentSession();
-        Transaction tx = currentSession.beginTransaction();
-
-        Owner owner = currentSession.get(Owner.class, theId);
-        System.out.println("getOwner function --> owner details: " + owner );
-
-        tx.commit();
-        currentSession.close();
-
-        return owner;
-
-
+    public Car getCar(int id) {
+        return null;
     }
 
     @Override
-    public void deleteOwner(int theId) {
+    public void deleteCar(int id) {
 
     }
 }

@@ -11,7 +11,7 @@ import java.util.List;
 @RequestMapping("/owners")
 public class OwnerController {
 
-    // need to inject our customer service
+    // need to inject our owner service
     @Autowired
     private OwnerService ownerService;
 
