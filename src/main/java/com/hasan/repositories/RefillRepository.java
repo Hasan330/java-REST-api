@@ -68,4 +68,18 @@ public class RefillRepository {
 
         return refill;
     }
+
+    public Refill updateRefill(Refill refill){
+
+        // get the current hibernate session
+        Session currentSession = sessionFactory.getCurrentSession();
+        Transaction tx = currentSession.beginTransaction();
+
+        currentSession.update(refill);
+
+        currentSession.getTransaction().commit();
+        currentSession.close();
+
+        return refill;
+    }
 }
