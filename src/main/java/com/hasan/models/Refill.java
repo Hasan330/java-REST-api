@@ -31,9 +31,9 @@ public class Refill {
     @JsonIgnore
     private Car car;
 
-    @OneToMany(targetEntity = LongDistance.class, mappedBy = "refill", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(targetEntity = Distance.class, mappedBy = "refill", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 //    @JsonIgnore
-    private List<LongDistance> longDistances = new ArrayList<>();
+    private List<Distance> distances = new ArrayList<>();
 
     public Refill(){
 
@@ -84,16 +84,16 @@ public class Refill {
         return actualDistance;
     }
 
-    public List<LongDistance> getLongDistances() {
-        return longDistances;
+    public List<Distance> getDistances() {
+        return distances;
     }
 
-    public void setLongDistances(List<LongDistance> longDistances) {
-        this.longDistances = longDistances;
+    public void setDistances(List<Distance> distances) {
+        this.distances = distances;
     }
 
-    public void addLongDistance(LongDistance longDistance){
-        this.longDistances.add(longDistance);
+    public void addLongDistance(Distance distance){
+        this.distances.add(distance);
     }
 
     public Car getCar() {

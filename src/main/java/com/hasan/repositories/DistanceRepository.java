@@ -1,7 +1,7 @@
 package com.hasan.repositories;
 
 import com.hasan.models.Car;
-import com.hasan.models.LongDistance;
+import com.hasan.models.Distance;
 import com.hasan.models.Owner;
 import com.hasan.models.Refill;
 import org.hibernate.Session;
@@ -13,7 +13,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public class LongDistanceRepository {
+public class DistanceRepository {
 
 
     // need to inject the session factory
@@ -27,48 +27,48 @@ public class LongDistanceRepository {
                     .addAnnotatedClass(Owner.class)
                     .addAnnotatedClass(Car.class)
                     .addAnnotatedClass(Refill.class)
-                    .addAnnotatedClass(LongDistance.class)
+                    .addAnnotatedClass(Distance.class)
                     .buildSessionFactory();
 
-    public List<LongDistance> getLongDistances() {
+    public List<Distance> getLongDistances() {
         // get the current hibernate session
         Session currentSession = sessionFactory.getCurrentSession();
         Transaction tx = currentSession.beginTransaction();
 
-        List<LongDistance> longDistances = currentSession.createQuery("from Longdistance").getResultList();
-        longDistances.forEach(longDistance -> System.out.println("Long Distance details " + longDistance.getSource() + " " + longDistance.getDestination()));
+        List<Distance> distances = currentSession.createQuery("from Distance").getResultList();
+        distances.forEach(longDistance -> System.out.println("Long Distance details " + longDistance.getSource() + " " + longDistance.getDestination()));
 
         tx.commit();
         currentSession.close();
 
         // return the results
-        return longDistances;
+        return distances;
     }
 
-    public LongDistance saveLongDistance(LongDistance longDistance) {
+    public Distance saveLongDistance(Distance distance) {
         // get the current hibernate session
         Session currentSession = sessionFactory.getCurrentSession();
         Transaction tx = currentSession.beginTransaction();
 
-        currentSession.save(longDistance);
+        currentSession.save(distance);
         currentSession.getTransaction().commit();
         currentSession.close();
 
-        return longDistance;
+        return distance;
     }
 
-    public LongDistance getLongDistance(int id) {
+    public Distance getLongDistance(int id) {
         // get the current hibernate session
         Session currentSession = sessionFactory.getCurrentSession();
         Transaction tx = currentSession.beginTransaction();
 
-        LongDistance longDistance = currentSession.get(LongDistance.class, id);
-        System.out.println("getLongDistance function --> long distance details: " + longDistance );
+        Distance distance = currentSession.get(Distance.class, id);
+        System.out.println("getLongDistance function --> long distance details: " + distance);
 
         tx.commit();
         currentSession.close();
 
-        return longDistance;
+        return distance;
     }
 
     public void deleteLongDistance(int id) {
@@ -76,18 +76,18 @@ public class LongDistanceRepository {
     }
 
 
-    public LongDistance updateLongDistance(LongDistance longDistance){
+    public Distance updateLongDistance(Distance distance){
 
         // get the current hibernate session
         Session currentSession = sessionFactory.getCurrentSession();
         Transaction tx = currentSession.beginTransaction();
 
-        currentSession.update(longDistance);
+        currentSession.update(distance);
 
         currentSession.getTransaction().commit();
         currentSession.close();
 
-        return longDistance;
+        return distance;
     }
 
 }

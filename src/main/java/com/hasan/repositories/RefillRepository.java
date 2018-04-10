@@ -1,7 +1,7 @@
 package com.hasan.repositories;
 
 import com.hasan.models.Car;
-import com.hasan.models.LongDistance;
+import com.hasan.models.Distance;
 import com.hasan.models.Owner;
 import com.hasan.models.Refill;
 import org.hibernate.Session;
@@ -22,7 +22,7 @@ public class RefillRepository {
                     .addAnnotatedClass(Owner.class)
                     .addAnnotatedClass(Car.class)
                     .addAnnotatedClass(Refill.class)
-                    .addAnnotatedClass(LongDistance.class)
+                    .addAnnotatedClass(Distance.class)
                     .buildSessionFactory();
 
 
