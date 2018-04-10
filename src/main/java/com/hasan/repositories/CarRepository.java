@@ -46,6 +46,21 @@ public class CarRepository {
         return cars;
     }
 
+    //    @Override
+    public Car getCar(int id) {
+        // get the current hibernate session
+        Session currentSession = sessionFactory.getCurrentSession();
+        Transaction tx = currentSession.beginTransaction();
+
+//        Car car = currentSession.get(Car.class, id);
+        Car car = (Car) currentSession.createQuery("from Car where id="+ id).getSingleResult();
+        System.out.println("getCar function --> car details: " + car );
+
+        currentSession.close();
+
+        return car;
+    }
+
 //    @Override
     public Car saveCar(Car car) {
         // get the current hibernate session
@@ -59,20 +74,6 @@ public class CarRepository {
         return car;
     }
 
-//    @Override
-    public Car getCar(int id) {
-        // get the current hibernate session
-        Session currentSession = sessionFactory.getCurrentSession();
-        Transaction tx = currentSession.beginTransaction();
-
-        Car car = currentSession.get(Car.class, id);
-        System.out.println("getCar function --> car details: " + car );
-
-        tx.commit();
-        currentSession.close();
-
-        return car;
-    }
 
 //    @Override
     public void deleteCar(int id) {

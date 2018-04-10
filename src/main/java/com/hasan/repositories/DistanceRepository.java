@@ -65,7 +65,6 @@ public class DistanceRepository {
         Distance distance = currentSession.get(Distance.class, id);
         System.out.println("getLongDistance function --> long distance details: " + distance);
 
-        tx.commit();
         currentSession.close();
 
         return distance;

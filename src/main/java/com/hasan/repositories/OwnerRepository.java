@@ -59,15 +59,16 @@ public class OwnerRepository {
     }
 
 //    @Override
-    public Owner getOwner(int theId) {
+    public Owner getOwner(int id) {
         // get the current hibernate session
         Session currentSession = sessionFactory.getCurrentSession();
         Transaction tx = currentSession.beginTransaction();
 
-        Owner owner = currentSession.get(Owner.class, theId);
+//        Owner owner = currentSession.get(Owner.class, id);
+        Owner owner = (Owner) currentSession.createQuery("from Owner where id="+ id).getSingleResult();
+
         System.out.println("getOwner function --> owner details: " + owner );
 
-        tx.commit();
         currentSession.close();
 
         return owner;
