@@ -1,7 +1,7 @@
 package com.hasan.repositories;
 
 import com.hasan.models.Car;
-import com.hasan.models.LongDistance;
+import com.hasan.models.Distance;
 import com.hasan.models.Owner;
 import com.hasan.models.Refill;
 import org.hibernate.Session;
@@ -26,7 +26,7 @@ public class CarRepository {
                     .addAnnotatedClass(Owner.class)
                     .addAnnotatedClass(Car.class)
                     .addAnnotatedClass(Refill.class)
-                    .addAnnotatedClass(LongDistance.class)
+                    .addAnnotatedClass(Distance.class)
                     .buildSessionFactory();
 
 
@@ -66,7 +66,7 @@ public class CarRepository {
         Transaction tx = currentSession.beginTransaction();
 
         Car car = currentSession.get(Car.class, id);
-        System.out.println("getOwner function --> owner details: " + car );
+        System.out.println("getCar function --> car details: " + car );
 
         tx.commit();
         currentSession.close();

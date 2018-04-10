@@ -15,7 +15,7 @@ public class Main {
                         .addAnnotatedClass(Owner.class)
                         .addAnnotatedClass(Car.class)
                         .addAnnotatedClass(Refill.class)
-                        .addAnnotatedClass(LongDistance.class)
+                        .addAnnotatedClass(Distance.class)
                         .buildSessionFactory();
 
         System.out.println("\n\n\t\t\t\t\t\t **** Starting Run ****\n");
@@ -45,7 +45,7 @@ public class Main {
         fourthRefill.setCar(porsche);
 
         //Instantiate long distances
-        LongDistance tubasRamallah1 = new LongDistance("Tubas", "Ramallah", 85, Helpers.createDate(14,3,2018));
+        Distance tubasRamallah1 = new Distance("Tubas", "Ramallah", 85, Helpers.createDate(14,3,2018));
 
         //Assign longDistance to refill
         tubasRamallah1.setRefill(initialRefill);
@@ -96,7 +96,7 @@ public class Main {
         System.out.println(savedOwner);
         Car result = session.get(Car.class, seatIbiza.getId());
         System.out.println("Ibiza car -->" + result);
-        LongDistance distanceResult = session.get(LongDistance.class, tubasRamallah1.getId());
+        Distance distanceResult = session.get(Distance.class, tubasRamallah1.getId());
         System.out.println("Long distance -->" + distanceResult);
 
 

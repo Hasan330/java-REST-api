@@ -8,7 +8,7 @@ import java.util.Calendar;
 
 @Entity
 @Table(name= "distances")
-public class LongDistance {
+public class Distance {
 
     @Id
     @Column(name= "id")
@@ -29,11 +29,11 @@ public class LongDistance {
     @JsonIgnore
     private Refill refill;
 
-    public LongDistance(){
+    public Distance(){
 
     }
 
-    public LongDistance(String source, String destination, int distance, Calendar dateOfTrip) {
+    public Distance(String source, String destination, int distance, Calendar dateOfTrip) {
         this.source = source;
         this.destination = destination;
         this.distance = distance;
@@ -81,7 +81,7 @@ public class LongDistance {
 
     @Override
     public String toString() {
-        return "LongDistance{" +
+        return "Distance{" +
                 "id=" + id +
                 ", source='" + source + '\'' +
                 ", destination='" + destination + '\'' +

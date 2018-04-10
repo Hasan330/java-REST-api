@@ -53,9 +53,6 @@ public class OwnerController {
     }
 
 
-
-
-
     @PostMapping("{ownerId}/addCar")
     public Owner addCar(@RequestParam(value = "carId") int carId, @PathVariable int ownerId){
         Owner owner = ownerService.addCar(ownerId, carId);

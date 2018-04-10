@@ -13,7 +13,8 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public class OwnerRepository {
+public class DistanceRepository {
+
 
     // need to inject the session factory
 //    @Autowired
@@ -29,66 +30,64 @@ public class OwnerRepository {
                     .addAnnotatedClass(Distance.class)
                     .buildSessionFactory();
 
-//    @Override
-    public List<Owner> getOwners() {
+    public List<Distance> getLongDistances() {
         // get the current hibernate session
         Session currentSession = sessionFactory.getCurrentSession();
         Transaction tx = currentSession.beginTransaction();
 
-        List<Owner> owners = currentSession.createQuery("from Owner").getResultList();
-        owners.forEach(owner -> System.out.println("Owner details " + owner.getName() + " " + owner.getId()));
+        List<Distance> distances = currentSession.createQuery("from Distance").getResultList();
+        distances.forEach(longDistance -> System.out.println("Long Distance details " + longDistance.getSource() + " " + longDistance.getDestination()));
 
         tx.commit();
         currentSession.close();
 
         // return the results
-        return owners;
+        return distances;
     }
 
-//    @Override
-    public Owner saveOwner(Owner theOwner) {
+    public Distance saveLongDistance(Distance distance) {
         // get the current hibernate session
         Session currentSession = sessionFactory.getCurrentSession();
         Transaction tx = currentSession.beginTransaction();
 
-        currentSession.save(theOwner);
+        currentSession.save(distance);
         currentSession.getTransaction().commit();
         currentSession.close();
 
-        return theOwner;
+        return distance;
     }
 
-//    @Override
-    public Owner getOwner(int theId) {
+    public Distance getLongDistance(int id) {
         // get the current hibernate session
         Session currentSession = sessionFactory.getCurrentSession();
         Transaction tx = currentSession.beginTransaction();
 
-        Owner owner = currentSession.get(Owner.class, theId);
-        System.out.println("getOwner function --> owner details: " + owner );
+        Distance distance = currentSession.get(Distance.class, id);
+        System.out.println("getLongDistance function --> long distance details: " + distance);
 
         tx.commit();
         currentSession.close();
 
-        return owner;
+        return distance;
     }
 
-    public Owner updateOwner(Owner owner){
+    public void deleteLongDistance(int id) {
+
+    }
+
+
+    public Distance updateLongDistance(Distance distance){
 
         // get the current hibernate session
         Session currentSession = sessionFactory.getCurrentSession();
         Transaction tx = currentSession.beginTransaction();
 
-        currentSession.update(owner);
+        currentSession.update(distance);
 
         currentSession.getTransaction().commit();
         currentSession.close();
 
-        return owner;
+        return distance;
     }
 
-//    @Override
-    public void deleteOwner(int theId) {
-
-    }
 }
