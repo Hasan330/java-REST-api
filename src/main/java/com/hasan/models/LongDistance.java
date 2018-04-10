@@ -7,7 +7,8 @@ import javax.persistence.*;
 import java.util.Calendar;
 
 @Entity
-@Table(name= "distances")
+//@Table(name= "distances")
+@Table(name = "longdistances")
 public class LongDistance {
 
     @Id

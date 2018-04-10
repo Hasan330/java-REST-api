@@ -66,7 +66,7 @@ public class CarRepository {
         Transaction tx = currentSession.beginTransaction();
 
         Car car = currentSession.get(Car.class, id);
-        System.out.println("getOwner function --> owner details: " + car );
+        System.out.println("getCar function --> car details: " + car );
 
         tx.commit();
         currentSession.close();
