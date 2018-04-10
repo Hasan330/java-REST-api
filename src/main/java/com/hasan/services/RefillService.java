@@ -1,6 +1,8 @@
 package com.hasan.services;
 
+import com.hasan.models.Distance;
 import com.hasan.models.Refill;
+import com.hasan.repositories.DistanceRepository;
 import com.hasan.repositories.RefillRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,6 +16,9 @@ public class RefillService {
     @Autowired
     private RefillRepository refillRepository;
 
+    @Autowired
+    private DistanceRepository distanceRepository;
+
     @Transactional
     public List<Refill> getRefills(){ return refillRepository.getRefills(); }
 
@@ -23,5 +28,17 @@ public class RefillService {
     @Transactional
     public Refill getRefill(int id) {
         return refillRepository.getRefill(id);
+    }
+
+    @Transactional
+    public Refill addDistance(int refillId, int distanceId){
+
+        Distance distance = distanceRepository.getLongDistance(distanceId);
+        Refill refill = refillRepository.getRefill(refillId);
+        refill.addDistance(distance);
+
+        System.out.println("Adding distance " + distance + " to refill " + refillId);
+
+        return refillRepository.updateRefill(refill);
     }
 }

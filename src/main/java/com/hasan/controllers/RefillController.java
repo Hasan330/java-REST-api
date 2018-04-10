@@ -30,4 +30,11 @@ public class RefillController {
         Refill refill = refillService.getRefill(id);
         return refill;
     }
+
+    @PostMapping("{refillId}/addDistance")
+    public Refill addDistance(@PathVariable int refillId, @RequestParam(value = "distanceId") int ditanceId){
+        Refill refill = refillService.addDistance(refillId, ditanceId);
+
+        return refill;
+    }
 }

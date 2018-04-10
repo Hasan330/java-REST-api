@@ -92,7 +92,9 @@ public class Refill {
         this.distances = distances;
     }
 
-    public void addLongDistance(Distance distance){
+    public void addDistance(Distance distance){
+
+        distance.setRefill(this);
         this.distances.add(distance);
     }
 

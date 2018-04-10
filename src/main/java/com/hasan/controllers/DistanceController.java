@@ -37,5 +37,4 @@ public class DistanceController {
         return distance;
     }
 
-
 }

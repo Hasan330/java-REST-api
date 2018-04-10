@@ -54,7 +54,7 @@ public class OwnerController {
 
 
     @PostMapping("{ownerId}/addCar")
-    public Owner addCar(@RequestParam(value = "carId") int carId, @PathVariable int ownerId){
+    public Owner addCar(@PathVariable int ownerId, @RequestParam(value = "carId") int carId){
         Owner owner = ownerService.addCar(ownerId, carId);
 
         return owner;
