@@ -60,4 +60,9 @@ public class OwnerController {
         return owner;
     }
 
+    @GetMapping("{ownerId}/totalSpent")
+    public String getTotalPayment(@PathVariable int ownerId){
+        return ownerService.getTotalPayment(ownerId);
+    }
+
 }
