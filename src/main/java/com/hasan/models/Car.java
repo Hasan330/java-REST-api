@@ -106,7 +106,7 @@ public class Car extends Vehicle{
     public void addFuelRefill(Refill refill) {
         System.out.println("\n"+ this.owner.getName() + " Added fuel refills for car " + this.getBrand() + " " +  this.getModel());
         System.out.println("Refill Cost for " + this.getBrand() + " " + this.getModel() + " is: " + refill.getCost() + " ILS");
-//        this.totalCost +=  refills.getCost();
+        this.totalCost +=  refill.getCost();
 
         refill.setCar(this);
         this.refills.add(refill);

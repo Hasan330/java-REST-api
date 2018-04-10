@@ -51,8 +51,6 @@ public class Main {
         tubasRamallah1.setRefill(initialRefill);
 
 
-
-
         //            **** BUSINESS LOGIC: ****
 
         //Calculate total money paid on a certain car
@@ -63,9 +61,6 @@ public class Main {
         //Calculate total money paid by a certain user
         hasan.printTotalPayment();
         sawsan.printTotalPayment();
-
-
-
 
 
 

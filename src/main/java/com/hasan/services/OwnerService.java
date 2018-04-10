@@ -25,11 +25,19 @@ public class OwnerService {
         return ownerRepository.getOwners();
     }
 
-//    @Override
+
+    @Transactional
+    public Owner getOwner(int id) {
+        return ownerRepository.getOwner(id);
+    }
+
+
+    //    @Override
     @Transactional
     public Owner saveOwner(Owner theOwner) {
         return ownerRepository.saveOwner(theOwner);
     }
+
 
 //    @Override
     @Transactional
@@ -44,17 +52,26 @@ public class OwnerService {
         return ownerRepository.updateOwner(owner);
     }
 
-
 //    @Override
     @Transactional
-    public Owner getOwner(int theId) {
-        return ownerRepository.getOwner(theId);
+    public void deleteOwner(int id) {
+
     }
 
-
-//    @Override
     @Transactional
-    public void deleteOwner(int theId) {
+    public String getTotalPayment(int id){
+        Owner owner = ownerRepository.getOwner(id);
 
+        List<Car> cars = owner.getCars();
+
+        //Add all payments from those cars
+        int totalUserPayment = 0;
+        for(int i=0; i < cars.size(); i++){
+            totalUserPayment += cars.get(i).getTotalCost();
+        }
+
+        //Print Outcome
+//        System.out.println("\nTotal money paid by " + owner.getName() + " on all cars is: " + totalUserPayment + "\n");
+        return "\nTotal money paid by " + owner.getName() + " on all cars is: " + totalUserPayment + "\n";
     }
 }

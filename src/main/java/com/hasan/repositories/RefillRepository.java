@@ -63,7 +63,6 @@ public class RefillRepository {
         Refill refill = currentSession.get(Refill.class, id);
         System.out.println("getOwner function --> refill details: " + refill );
 
-        tx.commit();
         currentSession.close();
 
         return refill;
