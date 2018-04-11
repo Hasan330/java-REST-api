@@ -65,4 +65,9 @@ public class OwnerController {
         return ownerService.getTotalPayment(ownerId);
     }
 
+    @GetMapping("{ownerId}/totalSpentOnCar")
+    public String getCarTotalPayment(@PathVariable int ownerId, @RequestParam(value = "carId") int carId){
+        return ownerService.getCarTotalPayment(ownerId, carId);
+    }
+
 }
