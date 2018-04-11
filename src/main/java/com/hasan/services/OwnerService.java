@@ -2,6 +2,7 @@ package com.hasan.services;
 
 import com.hasan.models.Car;
 import com.hasan.models.Owner;
+import com.hasan.models.Refill;
 import com.hasan.repositories.CarRepository;
 import com.hasan.repositories.OwnerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,7 +62,6 @@ public class OwnerService {
     @Transactional
     public String getTotalPayment(int id){
         Owner owner = ownerRepository.getOwner(id);
-
         List<Car> cars = owner.getCars();
 
         //Add all payments from those cars
@@ -69,9 +69,43 @@ public class OwnerService {
         for(int i=0; i < cars.size(); i++){
             totalUserPayment += cars.get(i).getTotalCost();
         }
-
-        //Print Outcome
-//        System.out.println("\nTotal money paid by " + owner.getName() + " on all cars is: " + totalUserPayment + "\n");
         return "\nTotal money paid by " + owner.getName() + " on all cars is: " + totalUserPayment + "\n";
     }
+
+   @Transactional
+   public String getCarTotalPayment(int ownerId, int carId){
+
+       //Make sure car belongs to said user
+      Owner owner = ownerRepository.getOwner(ownerId);
+      List<Car> ownerCars = owner.getCars();
+
+      boolean correctAccess = false;
+      for(Car ownerCar:ownerCars){
+          System.out.println("Car id:" + ownerCar.getId());
+          if(ownerCar.getId() == carId){
+              correctAccess = true;
+          }
+      }
+
+
+      //Get total payment on car if user has access grants
+       if(correctAccess == true){
+           Car car = carRepository.getCar(carId);
+           List<Refill> refills = car.getRefills();
+
+           int totalCarPayment = 0;
+           for(Refill refill:refills){
+               totalCarPayment += refill.getCost();
+           }
+           return "Total money spent by user on car is " + totalCarPayment;
+
+       }
+       else {
+          return "User has no rights to access this car";
+       }
+
+
+
+
+   }
 }
