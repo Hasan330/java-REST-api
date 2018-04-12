@@ -52,4 +52,21 @@ public class CarService {
         return carRepository.updateCar(car);
     }
 
+    public String getTotalDistance(int carId){
+        Car car = carRepository.getCar(carId);
+
+        List<Refill> refills = car.getRefills();
+
+        int totalDistance = 0;
+        for(Refill refill:refills){
+            totalDistance += refill.getTotalDistance();
+        }
+
+        car.setTotalDistance(totalDistance);
+        final Car updatedCar = carRepository.updateCar(car);
+
+        return  "Total distance covered by: " + updatedCar.getBrand() + " " +   updatedCar.getModel() + " is: " + updatedCar.getTotalDistance() + " KM";
+    }
+
+
 }

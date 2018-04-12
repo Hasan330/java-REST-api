@@ -161,4 +161,8 @@ public class Car extends Vehicle{
 //                ", owner=" + owner.getName() +
                 '}';
     }
+
+    public void setTotalDistance(int totalDistance) {
+        this.totalDistance = totalDistance;
+    }
 }

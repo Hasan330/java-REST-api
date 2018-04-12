@@ -44,4 +44,9 @@ public class CarController {
         return car;
     }
 
+    @GetMapping("{carId}/totalDistance")
+    public String getTotalDistance(@PathVariable int carId){
+        return carService.getTotalDistance(carId);
+    }
+
 }
