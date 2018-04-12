@@ -26,6 +26,7 @@ public class Refill {
     private double     litresFilled;
     private int        proposedDistance;
     private int        actualDistance;
+    private int        totalDistance;
 
     @ManyToOne
     @JsonIgnore
@@ -94,6 +95,9 @@ public class Refill {
 
     public void addDistance(Distance distance){
 
+        this.addTotalDistance(distance.getDistance());
+//        this.car.addTotalDistance(distance.getDistance());
+
         distance.setRefill(this);
         this.distances.add(distance);
     }
@@ -105,6 +109,16 @@ public class Refill {
     public void setCar(Car car) {
         this.car = car;
 //        this.car.addFuelRefill(this);
+    }
+
+    public int getTotalDistance() {
+        return totalDistance;
+    }
+
+    public void addTotalDistance(int totalDistance) {
+        System.out.println("Adding to totalDistance field in Refill object "+ totalDistance);
+
+        this.totalDistance += totalDistance;
     }
 
     @Override

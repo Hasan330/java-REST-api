@@ -30,8 +30,11 @@ public class Car extends Vehicle{
     private int gears;
     @Column(name = "isManual")
     private boolean isManual;
+//    @Column(name= "totalDistance")
+    private  int totalDistance;
 
     private int totalCost;
+
 
     @ManyToOne
     @JsonIgnore
@@ -53,6 +56,7 @@ public class Car extends Vehicle{
         this.millage  = millage;
         this.gears    = gears;
         this.isManual = isManual;
+//        this.totalDistance = 0;
     }
 
     public int getId() {
@@ -129,6 +133,18 @@ public class Car extends Vehicle{
 //        this.owner.addCar(this);
     }
 
+    public int getTotalDistance() {
+        return totalDistance;
+    }
+
+    public void addTotalDistance(int currentDistance) {
+        System.out.println("Adding to totalDistance field in Car object "+ totalDistance);
+        this.totalDistance += currentDistance;
+        System.out.println("Car totalDistance after adding " + currentDistance + "KM is " + this.totalDistance);
+    }
+
+
+
     @Override
     public String toString() {
         return "Car{" +
@@ -142,5 +158,9 @@ public class Car extends Vehicle{
                 ", totalCost=" + totalCost +
 //                ", owner=" + owner.getName() +
                 '}';
+    }
+
+    public void setTotalDistance(int totalDistance) {
+        this.totalDistance = totalDistance;
     }
 }

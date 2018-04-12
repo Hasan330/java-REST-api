@@ -70,4 +70,10 @@ public class OwnerController {
         return ownerService.getCarTotalPayment(ownerId, carId);
     }
 
+
+    @GetMapping("{ownerId}/totalDistance")
+    public String getTotalDistance(@PathVariable int ownerId){
+        return ownerService.getTotalDistance(ownerId);
+    }
+
 }
