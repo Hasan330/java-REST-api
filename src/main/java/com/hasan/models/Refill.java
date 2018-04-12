@@ -96,7 +96,7 @@ public class Refill {
     public void addDistance(Distance distance){
 
         this.addTotalDistance(distance.getDistance());
-        this.car.addTotalDistance(distance.getDistance());
+//        this.car.addTotalDistance(distance.getDistance());
 
         distance.setRefill(this);
         this.distances.add(distance);

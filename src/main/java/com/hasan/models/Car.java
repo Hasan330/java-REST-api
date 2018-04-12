@@ -112,8 +112,6 @@ public class Car extends Vehicle{
         System.out.println("Refill Cost for " + this.getBrand() + " " + this.getModel() + " is: " + refill.getCost() + " ILS");
         this.totalCost +=  refill.getCost();
 
-        this.addTotalDistance(refill.getTotalDistance());
-
         refill.setCar(this);
         this.refills.add(refill);
     }
