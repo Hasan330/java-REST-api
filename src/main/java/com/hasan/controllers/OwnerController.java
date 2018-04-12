@@ -73,7 +73,7 @@ public class OwnerController {
 
     @GetMapping("{ownerId}/totalDistance")
     public String getTotalDistance(@PathVariable int ownerId){
-        return ownerService.getTotalPayment(ownerId);
+        return ownerService.getTotalDistance(ownerId);
     }
 
 }

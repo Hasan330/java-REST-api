@@ -87,7 +87,6 @@ public class OwnerService {
           }
       }
 
-
       //Get total payment on car if user has access grants
        if(correctAccess == true){
            Car car = carRepository.getCar(carId);
@@ -103,9 +102,20 @@ public class OwnerService {
        else {
           return "User has no rights to access this car";
        }
-
-
-
-
    }
+
+   @Transactional
+    public String getTotalDistance(int ownerId){
+       Owner owner = ownerRepository.getOwner(ownerId);
+       List<Car> cars = owner.getCars();
+
+       //Add all distances from those cars
+       int totalDistance = 0;
+       for(int i=0; i < cars.size(); i++){
+           totalDistance += cars.get(i).getTotalDistance();
+       }
+       return "\nTotal distance convered by " + owner.getName() + " using all cars is: " + totalDistance + "\n";
+   }
+
+
 }
