@@ -5,6 +5,8 @@ import com.hasan.services.CarService;
 import com.hasan.services.OwnerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
+
 
 import java.util.List;
 
@@ -28,7 +30,14 @@ public class OwnerController {
     }
 
     @PostMapping("")
-    public Owner saveOwner(@RequestBody Owner owner){
+    public Owner saveOwner(@RequestBody(required=false) Owner owner){
+        if(owner ==null){
+            System.out.println("No owner sent in creation body --> Hitting lambda owner creating function to generate random owner");
+            RestTemplate restTemplate = new RestTemplate();
+            String lambdaURL = "https://qhc7ac9d7c.execute-api.us-east-1.amazonaws.com/development/sampleFunction";
+            owner = restTemplate.getForObject(lambdaURL, Owner.class);
+        }
+
         System.out.println("Saving owner with details ---> " + owner);
         ownerService.saveOwner(owner);
         return owner;
