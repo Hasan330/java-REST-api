@@ -28,7 +28,8 @@ public class OwnerController {
     }
 
     @PostMapping("")
-    public Owner saveOwner(@RequestBody Owner owner){
+    public Owner saveOwner(@RequestBody(required=false) Owner owner){
+
         System.out.println("Saving owner with details ---> " + owner);
         ownerService.saveOwner(owner);
         return owner;
