@@ -31,6 +31,8 @@ public class OwnerController {
 
     @PostMapping("")
     public Owner saveOwner(@RequestBody(required=false) Owner owner){
+
+        //Fallback to Lambda function if owner is not sent in request body
         if(owner ==null){
             System.out.println("No owner sent in creation body --> Hitting lambda owner creating function to generate random owner");
             RestTemplate restTemplate = new RestTemplate();
