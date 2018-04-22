@@ -7,7 +7,7 @@ Project is still in its early stages so expect constant improvements
 
 
 ## How to run
-- run sql server on port 8080
+- run sql server
 
 ```
 > mvn clean install
