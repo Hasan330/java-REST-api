@@ -15,7 +15,7 @@ In Terminal:
 > mvn clean install
 > run app using $ java -jar target/CarApp-1.0-SNAPSHOT.jar
 
-- Check that project is running on http://localhost:8080/
+- Check that project is running on http://localhost:8081/owners
 ```
 
 
