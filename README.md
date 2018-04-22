@@ -11,6 +11,7 @@ Project is still in its early stages so expect constant improvements
 ```
 - Run sql server
 
+In Terminal:
 > mvn clean install
 > run app using $ java -jar target/CarApp-1.0-SNAPSHOT.jar
 
