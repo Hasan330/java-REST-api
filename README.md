@@ -7,12 +7,15 @@ Project is still in its early stages so expect constant improvements
 
 
 ## How to run
-- run sql server
 
 ```
+- run sql server
 > mvn clean install
 > run app using $ java -jar target/CarApp-1.0-SNAPSHOT.jar
+
+Check that project is running on http://localhost:8080/
 ```
+
 
 
 [Collection Documentation](https://documenter.getpostman.com/view/1138746/collection/RVu5j98p)
