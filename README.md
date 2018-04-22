@@ -9,11 +9,12 @@ Project is still in its early stages so expect constant improvements
 ## How to run
 
 ```
-- run sql server
+- Run sql server
+
 > mvn clean install
 > run app using $ java -jar target/CarApp-1.0-SNAPSHOT.jar
 
-Check that project is running on http://localhost:8080/
+- Check that project is running on http://localhost:8080/
 ```
 
 
