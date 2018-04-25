@@ -5,6 +5,9 @@
 
 Project is still in its early stages so expect constant improvements
 
+## Lambda Endpoint:
+`https://qhc7ac9d7c.execute-api.us-east-1.amazonaws.com/development/sampleFunction`
+
 
 ## How to run
 
